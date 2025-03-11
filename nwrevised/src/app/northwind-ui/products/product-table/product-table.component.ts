@@ -44,7 +44,7 @@ export class ProductTableComponent implements OnInit, AfterViewInit {
     'delete'
   ];
 
-  products$!: Observable<Product[]>;
+  products: Product[] = [];
   dataSource: MatTableDataSource<Product> = new MatTableDataSource();
   errorMessage:any;
   productID!:number;
@@ -55,8 +55,11 @@ export class ProductTableComponent implements OnInit, AfterViewInit {
   constructor(private _productsService: ProductsService, private router:Router) { }
 
   ngOnInit(): void {
-    //this.products$ = this.getProducts();
-
+    const products = this._productsService.getProducts().subscribe(
+      (response) => {
+        this.products = response
+      }
+    );
   }
 
   ngAfterViewInit(): void {

@@ -22,17 +22,17 @@ export class ProductsService {
   url:string = 'https://localhost:7216';
   errorMessage:any;
 
-  nwDataChanged: BehaviorSubject<any>;
+  //nwDataChanged: BehaviorSubject<any>;
 
-  constructor(@Inject(HttpClient) private _http: HttpClient) {
-    this.nwDataChanged = new BehaviorSubject([]);
+  constructor(private _http:HttpClient) {
+    //this.nwDataChanged = new BehaviorSubject([]);
   }
 
   getProducts(): Observable<Product[]> {
-    var response = this._http.get<Product[]>(`${this.url}/Product/`)
+    var response = this._http.get<Product[]>(`${this.url}/Product`)
       .pipe(
         tap(items => {
-          this.nwDataChanged.next(items);
+          //this.nwDataChanged.next(items);
           console.log(this.url)
         }),
         catchError(this.handleError),
@@ -45,7 +45,7 @@ export class ProductsService {
     var response = this._http.get<Category[]>(`${this.url}/Category/`)
       .pipe(
         tap(items => {
-          this.nwDataChanged.next(items);
+          //this.nwDataChanged.next(items);
           console.log(this.url)
         }),
         catchError(this.handleError),
@@ -59,7 +59,7 @@ export class ProductsService {
     var response = this._http.get<Product>(url)
       .pipe(
         tap(item => {
-          this.nwDataChanged.next(item);
+          //this.nwDataChanged.next(item);
           console.log(item)
         }),
         catchError(this.handleError),

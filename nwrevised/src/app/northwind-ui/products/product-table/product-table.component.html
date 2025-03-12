@@ -1,61 +1,36 @@
-<p>prods</p>
-<!--<app-nav></app-nav>
+<!--<app-nav></app-nav> -->
 
 <div id="main-wrapper">
   <div>
-    <ng-container *ngIf="products$">
-    <mat-table mat-table [dataSource]="dataSource" matSort class="table-mat mat-elevation-z8">
+    @if(products){
+      <table>
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Product Price</th>  
+            <th>In Stock</th>
+            <th>Order</th>
+            <th>Discontinued</th>
+            <th></th>
+          </tr>
+        </thead>
+       @for(product of products; track product.productId){
+        <tr>
+          <td>{{product.productName}}</td>
+          <td>{{product.unitPrice}}</td>  
+          <td>{{product.unitsInStock}}</td>
+          <td>{{product.unitsOnOrder}}</td>
+          <td>{{product.discontinued}}</td>
+          <td><button class="btn btn-primary">Details</button></td>
+          <td><button class="btn btn-danger" (click)="deleteProduct(product.productId)">Delete</button></td>
+        </tr>
+      }
+    </table>
+  }
 
-      <ng-container matColumnDef="displayName">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Product Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.productName}} </td>
-      </ng-container>
+    <!--<mat-paginator [pageSizeOptions]="[5, 10, 20]"  showFirstLastButtons></mat-paginator> -->
 
-      <ng-container matColumnDef="quantity">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
-        <td mat-cell *matCellDef="let element"> {{element.quantityPerUnit}} </td>
-      </ng-container>
-
-
-      <ng-container matColumnDef="price">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Unit Price </th>
-        <td mat-cell *matCellDef="let element"> {{element.unitPrice}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="rating">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Rating </th>
-        <td mat-cell>test
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="discontinued">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Discontinued </th>
-        <td mat-cell *matCellDef="let element"> {{element.discontinued}} </td>
-      </ng-container>
-
-
-      <ng-container matColumnDef="edit">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>  </th>
-        <td mat-cell *matCellDef="let element">
-        <button class="btn btn-primary"  [routerLink]="['details', element.productId]">Edit</button></td>
-      </ng-container>
-
-      <ng-container matColumnDef="delete">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>  </th>
-        <td mat-cell *matCellDef="let element">
-        <button class="btn btn-primary" (click)="deleteProduct(element)">Delete</button></td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-    </mat-table>
-    </ng-container>
-
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]"  showFirstLastButtons></mat-paginator>
-
-    <button class="btn btn-success" routerLink="details/new">Add New Product</button>
+    !<!--<button class="btn btn-success" routerLink="details/new">Add New Product</button> -->
 
     </div>
   </div>
--->

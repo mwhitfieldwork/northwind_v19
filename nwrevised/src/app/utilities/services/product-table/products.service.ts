@@ -17,14 +17,14 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ProductsService {
-//private _http = inject(HttpClient);
+private _http = inject(HttpClient);
 
   url:string = 'https://localhost:7216';
   errorMessage:any;
 
   //nwDataChanged: BehaviorSubject<any>;
 
-  constructor(private _http:HttpClient) {
+  constructor() {
     //this.nwDataChanged = new BehaviorSubject([]);
   }
 

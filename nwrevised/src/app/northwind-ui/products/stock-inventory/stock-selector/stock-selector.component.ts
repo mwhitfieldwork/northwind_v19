@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, input, Output } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { ProductModel } from '../../../../utilities/models/product';
+import { Category } from '../../product-table/models/category';
 @Component({
   selector: 'stock-selector',
   standalone: true,
@@ -10,7 +10,7 @@ import { ProductModel } from '../../../../utilities/models/product';
 })
 export class StockSelectorComponent {
   @Input() parent!: FormGroup //switch to signal
-  @Input() products!:ProductModel[];
+  @Input() categories!:Category[];
   @Output() added = new EventEmitter<any>();
 
   onAdd(){

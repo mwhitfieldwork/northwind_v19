@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormArray, ReactiveFormsModule, FormBuilder} from '@angular/forms';
 import { StockBranchComponent } from "./stock-branch/stock-branch.component";
 import {StockSelectorComponent} from "./stock-selector/stock-selector.component"
 import { StockProductsComponent } from "./stock-products/stock-products.component";
 import { JsonPipe } from '@angular/common';
 import {ProductModel} from "../../../utilities/models/product"
+import { StockCategoryService } from '../../../utilities/services/stock-categories/stock-category.service';
+import { Category } from '../product-table/models/category';
 
 @Component({
   selector: 'app-stock-inventory',
@@ -19,7 +21,7 @@ import {ProductModel} from "../../../utilities/models/product"
 })
 
 //Creating a small feature that allows product to be ordered
-export class StockInventoryComponent {
+export class StockInventoryComponent implements OnInit {
   products: ProductModel[] =[
     {categoryId:2,
       unitPrice: 20,
@@ -34,6 +36,17 @@ export class StockInventoryComponent {
       productName:"test three"
     },
   ]
+
+  private _categoryService = inject(StockCategoryService)
+  categories: Category[] = [];
+
+  ngOnInit(): void {
+    const categories = this._categoryService.getCategories().subscribe(
+      (response) => {
+        this.categories = response
+      }
+    );
+  }
 
   form!: FormGroup; // Declare form without initializing immediately
 

@@ -7,7 +7,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig} from '@angular/material/dialog'
 import {FormGroup, FormControl, FormBuilder, Validators, AbstractControl, ValidatorFn, FormArray, ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { NavigationEnd, Router } from '@angular/router';
-import { filter, map } from 'rxjs/operators';
+import { filter, map, take } from 'rxjs/operators';
 import { ProductsService } from '../../../utilities/services/product-table/products.service';
 
 @Component({

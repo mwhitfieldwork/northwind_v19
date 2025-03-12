@@ -105,6 +105,10 @@ export class ProductTableComponent implements OnInit, AfterViewInit {
 */
   addRating(products:Product[]):void {
   }
+
+  deleteProduct(id:number){
+    console.log(id);
+  }
 }
 
 

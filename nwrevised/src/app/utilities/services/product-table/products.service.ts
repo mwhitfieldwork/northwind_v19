@@ -2,7 +2,7 @@ import { Inject, inject, Injectable } from '@angular/core';
 import { Observable, of, BehaviorSubject, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Product } from '../../../northwind-ui/products/product-table/models/products';
-import { catchError, tap, map } from 'rxjs/operators'
+import { catchError, tap, map, take } from 'rxjs/operators'
 import { ProductModel } from '../../../utilities/models/product';
 import { Category } from '../../../northwind-ui/products/product-table/models/category';
 
@@ -31,6 +31,7 @@ private _http = inject(HttpClient);
   getProducts(): Observable<Product[]> {
     var response = this._http.get<Product[]>(`${this.url}/Product`)
       .pipe(
+        map(products => products.slice(0, 10)), 
         tap(items => {
           //this.nwDataChanged.next(items);
           console.log(this.url)

@@ -11,6 +11,7 @@
             <th>In Stock</th>
             <th>Order</th>
             <th>Discontinued</th>
+            <th></th>
           </tr>
         </thead>
        @for(product of products; track product.productId){
@@ -20,7 +21,7 @@
           <td>{{product.unitsInStock}}</td>
           <td>{{product.unitsOnOrder}}</td>
           <td>{{product.discontinued}}</td>
-          <!--<td><button class="btn btn-primary" [routerLink]="[details, product.productId]">Details</button></td>-->
+          <td><button class="btn btn-primary">Details</button></td>
           <td><button class="btn btn-danger" (click)="deleteProduct(product.productId)">Delete</button></td>
         </tr>
       }

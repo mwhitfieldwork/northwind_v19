@@ -77,6 +77,7 @@ export class ProductTableComponent implements OnInit, AfterViewInit {
       map(products => products),
     );
   }
+  
 /*
   deleteProduct(product:Product){
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
@@ -103,6 +104,7 @@ export class ProductTableComponent implements OnInit, AfterViewInit {
     });
   }
 */
+
   addRating(products:Product[]):void {
   }
 

@@ -17,17 +17,17 @@ export class StockSelectorComponent {
     console.log(this.parent.get('selector')?.value, 'Selector')
     this.added.emit(this.parent.get('selector')?.value);
     this.parent.get('selector')?.reset({// reset changes the dom back to pristine, where set and patch value wont
-      product_id:'',
+      category_id:'',
       quantity:10,
       name:''
     });
     
     this.parent.get('selector')?.setValue({ //updates mulitple controls at once, must have the keyand the value
-      product_id:'',
+      category_id:'',
       quantity:10
     });
     this.parent.get('selector')?.patchValue({//used to update a single control
-      product_id:''
+      category_id:''
     });
   }
 }

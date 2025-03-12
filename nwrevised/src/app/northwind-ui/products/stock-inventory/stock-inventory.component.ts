@@ -57,19 +57,19 @@ export class StockInventoryComponent implements OnInit {
         code: '',
       }),
       selector: this.fb.group({
-        product_id: '',
+        category_id: '',
         quantity: 10
       }),
       stock: this.fb.array([ // Corrected to use this.fb.array
-        this.createStock({ product_id: 1, quantity: 60 }),
-        this.createStock({ product_id: 3, quantity: 30 })
+        this.createStock({ category_id: 1, quantity: 60 }),
+        this.createStock({ category_id: 3, quantity: 30 })
       ])
     });
   }
 
-  createStock(stockItem: { product_id: number; quantity: number }) {
+  createStock(stockItem: { category_id: number; quantity: number }) {
     return this.fb.group({ // Use fb.group instead of new FormGroup()
-      product_id: this.fb.control(stockItem.product_id),
+      product_id: this.fb.control(stockItem.category_id),
       quantity: this.fb.control(stockItem.quantity)
     });
   }

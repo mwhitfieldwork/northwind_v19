@@ -1,6 +1,6 @@
 <div class="stock-selector" [formGroup]="parent"><!--sets the formgroup to the form that was passed down from parent -->
     <div formGroupName="selector">
-        <select formControlName="product_id">
+        <select formControlName="category_id">
             <option value="">Select Category</option>
             @for(category of categories; track category.categoryId){
                 <option [value]="category.categoryId">{{category.categoryName}}</option>

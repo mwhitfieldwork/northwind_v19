@@ -3,7 +3,7 @@
      @for (item of stocks; track item) {
         <div formArrayName="stock">
             <span [formGroupName]="$index"> <!--$index is built into the @form-->
-                  {{item.value.product_id}} <!--Ties the formgroup to the index in the array-->
+                  {{item.value.category_id}} <!--Ties the formgroup to the index in the array-->
             </span>
             <input 
             type="number" 

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { catchError, Observable, tap, throwError} from 'rxjs';
-import { Category } from '../../../northwind-ui/products/product-table/models/category';
+import { Category } from '../../models/category';
 
 @Injectable({
   providedIn: 'root'

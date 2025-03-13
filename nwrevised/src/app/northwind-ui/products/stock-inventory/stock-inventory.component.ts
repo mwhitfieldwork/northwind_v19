@@ -5,8 +5,8 @@ import {StockSelectorComponent} from "./stock-selector/stock-selector.component"
 import { StockProductsComponent } from "./stock-products/stock-products.component";
 import { JsonPipe } from '@angular/common';
 import {ProductModel} from "../../../utilities/models/product"
-import { StockCategoryService } from '../../../utilities/services/stock-categories/stock-category.service';
-import { Category } from '../product-table/models/category';
+import { StockCategoryService } from '../../../utilities/services/category-stock/category-stock.service'
+import { Category } from '../../../utilities/models/category';
 
 @Component({
   selector: 'app-stock-inventory',
@@ -68,8 +68,8 @@ export class StockInventoryComponent implements OnInit {
   }
 
   createStock(stockItem: { category_id: number; quantity: number }) {
-    return this.fb.group({ // Use fb.group instead of new FormGroup()
-      product_id: this.fb.control(stockItem.category_id),
+    return this.fb.group({
+      category_id: this.fb.control(stockItem.category_id),
       quantity: this.fb.control(stockItem.quantity)
     });
   }

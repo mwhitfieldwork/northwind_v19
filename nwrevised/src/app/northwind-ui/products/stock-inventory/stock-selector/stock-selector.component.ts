@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, input, Output } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { Category } from '../../product-table/models/category';
+import { Category } from '../../../../utilities/models/category';
 @Component({
   selector: 'stock-selector',
   standalone: true,

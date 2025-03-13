@@ -1,1 +1,20 @@
-<p>stock-selector works!</p>
+<div class="stock-selector" [formGroup]="parent"><!--sets the formgroup to the form that was passed down from parent -->
+    <div formGroupName="selector">
+        <select formControlName="category_id">
+            <option value="">Select Category</option>
+            @for(category of categories; track category.categoryId){
+                <option [value]="category.categoryId">{{category.categoryName}}</option>
+            }
+        </select>
+        <input 
+        type="number" 
+        step="10"
+        min="10"
+        max="40"
+        formControlName="quantity">
+        <button 
+        (click)="onAdd()"
+        type="button"
+        >Add stock</button>
+    </div>
+</div>

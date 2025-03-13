@@ -4,12 +4,12 @@ import { Supplier } from "../../northwind-ui/products/product-table/models/suppl
 
 export interface ProductModel {
     categoryId: number;
-    discontinued: boolean;
+    discontinued?: boolean;
     productName: string;
-    quantityPerUnit: string;
-    reorderLevel: number;
-    supplierId: number;
+    quantityPerUnit?: string;
+    reorderLevel?: number;
+    supplierId?: number;
     unitPrice: number;
-    unitsInStock: number;
-    unitsOnOrder: number;
+    unitsInStock?: number;
+    unitsOnOrder?: number;
 }

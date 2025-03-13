@@ -1,1 +1,13 @@
-<p>stock-branch works!</p>
+<div [formGroup]="parent"><!--sets the formgroup to the form that was passed down from parent -->
+    <div formGroupName="store">
+        <input 
+        type="text" 
+        placeholder="Branch ID"
+        formControlName="branch"
+        >
+        <input 
+        type="text" 
+        placeholder="Manger Code"
+        formControlName="code">
+    </div>
+</div>

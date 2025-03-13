@@ -1,7 +1,7 @@
-<div class="stock-products" [formGroup]="parent"><!--sets the formgroup to the form that was passed down from parent -->
+<div [formGroup]="parent"><!--sets the formgroup to the form that was passed down from parent -->
 
      @for (item of stocks; track item) {
-        <div formArrayName="stock">
+        <div formArrayName="stock" class="stock-category-list" >
             <span [formGroupName]="$index"> <!--$index is built into the @form-->
                  {{item.value.category_id}} <!--Ties the formgroup to the index in the array-->
             </span>
@@ -10,10 +10,12 @@
             step="10"
             min="10"
             max="40"
-            [value]="item.value.quantity">
+            [value]="item.value.quantity"
+            class="category-stock-item">
             <button 
             type="button"
-            (click)="onRemove(item, $index)">Remove</button>
+            (click)="onRemove(item, $index)"
+            class="btn btn-warning">Remove</button>
         </div>
     }
 </div>

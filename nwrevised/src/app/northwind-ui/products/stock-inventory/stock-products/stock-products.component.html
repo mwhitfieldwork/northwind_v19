@@ -1,6 +1,6 @@
-<div [formGroup]="parent"><!--sets the formgroup to the form that was passed down from parent -->
+<div [formGroup]="parent()"><!--sets the formgroup to the form that was passed down from parent -->
 
-     @for (item of stocks; track item) {
+     @for (item of stocks(); track item) {
         <div formArrayName="stock" class="stock-category-list" >
             <span [formGroupName]="$index"> <!--$index is built into the @form-->
                  {{item.value.category_id}} <!--Ties the formgroup to the index in the array-->

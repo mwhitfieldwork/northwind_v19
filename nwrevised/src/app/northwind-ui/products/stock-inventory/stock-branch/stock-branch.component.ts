@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, Input } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -9,7 +9,5 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './stock-branch.component.scss'
 })
 export class StockBranchComponent {
-@Input() parent!: FormGroup //switch to signal
-
-
+  parent = input<FormGroup>(new FormGroup({})); 
 }

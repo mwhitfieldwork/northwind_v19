@@ -30,6 +30,7 @@ export class ProductTableComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild(MatPaginator, {static: true})
   paginator!: MatPaginator;
+  isLoading: boolean = false;
  
 
   @ViewChild(MatSort, {static: true}) sort!: MatSort;
@@ -56,8 +57,10 @@ export class ProductTableComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(private _productsService: ProductsService, private router:Router) { }
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.productsList = this._productsService.getProducts().subscribe(
       (response) => {
+        this.isLoading= false;
         this.products = response
       }
     );

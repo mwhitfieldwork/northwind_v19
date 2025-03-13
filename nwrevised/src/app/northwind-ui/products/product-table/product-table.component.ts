@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild, Inject, AfterViewInit, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit, ViewChild, Inject, AfterViewInit, inject, OnDestroy } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { Product } from './models/products';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
@@ -26,7 +26,7 @@ import { ProductsService } from '../../../utilities/services/product-table/produ
     ReactiveFormsModule,*/
   ]
 })
-export class ProductTableComponent implements OnInit, AfterViewInit {
+export class ProductTableComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild(MatPaginator, {static: true})
   paginator!: MatPaginator;
@@ -51,15 +51,20 @@ export class ProductTableComponent implements OnInit, AfterViewInit {
   stars:string[] = [];
   index!:number
   starList:any[]  = [];
+  productsList!:Subscription;
 
   constructor(private _productsService: ProductsService, private router:Router) { }
 
   ngOnInit(): void {
-    const products = this._productsService.getProducts().subscribe(
+    this.productsList = this._productsService.getProducts().subscribe(
       (response) => {
         this.products = response
       }
     );
+  }
+
+  ngOnDestroy(): void {
+    if(this.productsList) this.productsList.unsubscribe();
   }
 
   ngAfterViewInit(): void {

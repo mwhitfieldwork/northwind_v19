@@ -1,0 +1,32 @@
+#navigation {
+    background-color:#000;
+    color:#fff;
+    
+    #logo img{
+        max-height: 75px;
+    }
+
+    & nav ul {
+        display: flex;
+        margin:0;
+    }
+    
+    & li {
+        list-style-type: none;
+        padding:10px;
+        border-right:1px solid #eee;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    & li a {
+        color:#fff;
+        display: block ;
+    }
+     
+}
+
+#logo{
+    width:30%;
+}

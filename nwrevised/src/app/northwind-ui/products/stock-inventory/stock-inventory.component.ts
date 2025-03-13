@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormArray, ReactiveFormsModule, FormBuilder} from '@angular/forms';
 import { StockBranchComponent } from "./stock-branch/stock-branch.component";
 import {StockSelectorComponent} from "./stock-selector/stock-selector.component"
@@ -7,6 +7,7 @@ import { JsonPipe } from '@angular/common';
 import {ProductModel} from "../../../utilities/models/product"
 import { StockCategoryService } from '../../../utilities/services/category-stock/category-stock.service'
 import { Category } from '../../../utilities/models/category';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-stock-inventory',
@@ -21,7 +22,7 @@ import { Category } from '../../../utilities/models/category';
 })
 
 //Creating a small feature that allows product to be ordered
-export class StockInventoryComponent implements OnInit {
+export class StockInventoryComponent implements OnInit, OnDestroy {
   products: ProductModel[] =[
     {categoryId:2,
       unitPrice: 20,
@@ -37,15 +38,23 @@ export class StockInventoryComponent implements OnInit {
     },
   ]
 
+  categoriesList!:Subscription;
+
   private _categoryService = inject(StockCategoryService)
   categories: Category[] = [];
 
   ngOnInit(): void {
-    const categories = this._categoryService.getCategories().subscribe(
+    this.categoriesList = this._categoryService.getCategories().subscribe(
       (response) => {
         this.categories = response
       }
     );
+  }
+
+  ngOnDestroy(): void {
+    if(this.categoriesList){
+      this.categoriesList.unsubscribe();
+    }
   }
 
   form!: FormGroup; // Declare form without initializing immediately

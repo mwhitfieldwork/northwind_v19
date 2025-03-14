@@ -1,0 +1,12 @@
+<ng-content select="h2"></ng-content>
+<ul>
+@for(employee of employees; track employee.employeeId){
+    <li>
+        <app-employee 
+        [firstName]="employee.firstName"
+        [lastName]="employee.lastName"
+        [title]="employee.title"
+        (click)="onSelect(employee)"></app-employee>    
+    </li>
+}
+</ul>

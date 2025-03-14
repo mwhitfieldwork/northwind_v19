@@ -1,0 +1,12 @@
+.employee-item {
+    display: flex;
+    flex-direction: column;
+    width:400px;
+    
+    &__name {
+        width:100%;
+        margin-right:20px;
+        padding:0;
+        margin: 0;
+    }
+}

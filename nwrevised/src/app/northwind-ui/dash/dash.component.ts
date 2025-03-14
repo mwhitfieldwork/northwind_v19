@@ -11,8 +11,5 @@ import { EmployeesComponent } from "../employees/employees.component";
 })
 export class DashComponent {
 
-  onSelect(id:number){
-    console.log(id, "escalated Employee Id");
-  }
 
 }

@@ -1,16 +1,19 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild, viewChild } from '@angular/core';
 import { EmployeeComponent } from './employee/employee.component';
 import { Employee } from '../../utilities/models/employee';
+import { TerritoriesComponent } from "./territories/territories.component";
 
 @Component({
   selector: 'app-employees',
   standalone: true,
-  imports: [EmployeeComponent],
+  imports: [EmployeeComponent, TerritoriesComponent],
   templateUrl: './employees.component.html',
   styleUrl: './employees.component.scss'
 })
 export class EmployeesComponent implements OnInit {
-@Output() employeeID = new EventEmitter<number>();
+selectedEmployee:Employee = {} as Employee;
+
+@ViewChild(TerritoriesComponent) territoriesComponent!: TerritoriesComponent
 
 employees:Employee[] = [
   {employeeId: 1,
@@ -36,8 +39,9 @@ ngOnInit(): void {
 }
 
 onSelect(employee:Employee) {
-  console.log(employee.employeeId);
-  this.employeeID.emit(employee.employeeId);
+  this.selectedEmployee = employee;
+  console.log(employee, 'Employee handled at right level');
+  this.territoriesComponent.onSelectTerritories(employee.employeeId)
 }
 
 }

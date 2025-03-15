@@ -1,10 +1,31 @@
-app-dash {
-    background-color: #F2F0F0
+h2{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size:large
+}
+#detail-wrapper{
+    display: flex;
+    justify-content: space-between;
+
+    #main-wrapper {
+        display: flex;
+        flex-direction: column;
+        margin-top:15px;
+        margin-left:20px;
+        padding:15px;
+        width:60%;
+        background-color: #fff;
+        -webkit-border-radius: 10x 10x 10x 10x;
+        border-radius: 10x 10x 10x 10x;
+    }
+    
+    #territory-graph {
+        width:35%;
+        height:400px;
+        margin-top:15px;
+        margin-right:20px;
+        background-color: #fff;
+        -webkit-border-radius: 10x 10x 10x 20p10xx;
+        border-radius: 10x 10x 10x 10x;
+    }
 }
 
-#main-wrapper {
-    display: flex;
-    flex-direction: column;
-    margin:0 auto;
-    width:70%;
-}

@@ -10,10 +10,12 @@ import { Component, computed, input } from '@angular/core';
 export class EmployeeComponent {
 firstName = input<string>()
 lastName = input<string>()
+photo = input<string>()
 title = input<string>()
 
 
 name = computed(()=>{
   return `${this.firstName()} ${this.lastName()}`
 })  
+ 
 }

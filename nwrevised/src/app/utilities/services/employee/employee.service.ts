@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Employee } from '../../models/employee';
-import { catchError, Observable, tap, throwError} from 'rxjs';
+import { catchError, map, Observable, tap, throwError} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -15,15 +15,10 @@ export class EmployeeService {
   constructor() { }
 
   get(): Observable<Employee[]> {
-    var response = this._http.get<Employee[]>(`${this.url}/Employee/`)
-      .pipe(
-        tap(items => {
-          console.log(items, 'Employees')
-        }),
-        catchError(this.handleError),
-      )
-
-    return response
+    return this._http.get<Employee[]>(`${this.url}/Employee/`).pipe(
+      map(employees => employees.slice(0, 7)), 
+      catchError(this.handleError)
+    );
   }
 
   private handleError(error: Response) {

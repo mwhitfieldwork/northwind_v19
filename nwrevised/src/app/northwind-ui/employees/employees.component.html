@@ -1,5 +1,6 @@
 <ng-content select="h2"></ng-content>
-<div id="employee-details">
+@if(selectedEmployee){
+<section id="employee-details">
     <ul>
     @for(employee of employees; track employee.employeeId){
         <li>
@@ -12,15 +13,25 @@
     }
     </ul>
 
-    @if(selectedEmployee){
-    <div>
-        <p>{{selectedEmployee.firstName}}</p>
-        <p>{{selectedEmployee.lastName}}</p>
-        <p>{{selectedEmployee.title}}</p>   
-        <p>{{selectedEmployee.city}}</p>
-        <p>{{selectedEmployee.country}}</p>
-        <p>{{selectedEmployee.postalCode}}</p>
-    </div>
-    <app-territories #territories></app-territories>
-    }
-</div>
+    <article class="employee-profile">
+        <div class="employee-profile__greeting">
+            <div class="employee-profile__name">
+                <p>{{selectedEmployee.firstName}}</p>
+                <p>{{selectedEmployee.lastName}}</p>
+                <p class="employee-profile__profession">{{selectedEmployee.title}}</p>  
+            </div>
+            <img [src]="profile_pic" class="employee-profile__image">
+        </div>
+
+        <div class="employee-profile__location">
+            <p>{{selectedEmployee.city}} ,</p>
+            <p>{{selectedEmployee.country}}, </p>
+            <p>{{selectedEmployee.postalCode}}</p>
+        </div>
+        <div class="employee-profile__notes">
+            <p>{{selectedEmployee.notes}}</p>
+        </div>
+        <app-territories #territories></app-territories>
+    </article>
+</section>
+}

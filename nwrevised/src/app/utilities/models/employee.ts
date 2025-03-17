@@ -16,4 +16,5 @@ export interface Employee {
     notes?: string;
     reportsTo?: number;
     photo?: string;
+    isDeleted?: boolean
 }

@@ -9,12 +9,12 @@
     
         li{
             border-bottom: 1px solid #ccc;
-        }
-
-        li:hover{
-            cursor: pointer;
-            background-color: #ccc;
-            color:#fff;
+    
+            &:hover{
+                cursor: pointer;
+                background-color: #ccc;
+                color:#fff;
+            }
         }
     }
 
@@ -55,6 +55,12 @@
 
         &__notes{
             font-size:small;
+        }
+
+        &__drop {
+            display: flex;
+            justify-content: flex-end;
+            margin-top:20px;
         }
     }
 }

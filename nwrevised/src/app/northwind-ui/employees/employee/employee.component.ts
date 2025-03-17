@@ -12,6 +12,7 @@ firstName = input<string>()
 lastName = input<string>()
 photo = input<string>()
 title = input<string>()
+selected = input.required<boolean>()
 
 
 name = computed(()=>{

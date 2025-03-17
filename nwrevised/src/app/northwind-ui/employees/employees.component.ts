@@ -30,7 +30,7 @@ ngOnInit(): void {
   .subscribe(
     (response) => {
       this.isLoading = false;
-      this.employees = response.slice(0, 7);
+      this.employees = response.filter(employee => employee.isDeleted !== true).slice(0, 7);
     }
   );
 }
@@ -40,6 +40,9 @@ onSelect(employee:Employee) {
   this.isSelected = true;
   this.profile_pic = `/${employee.firstName?.toLocaleLowerCase()}.png`;
   this.employeeSelected.emit(employee.employeeId);
+}
+onDropEmployee(employeeId: number) {
+  this._employeeService.dropEmployee(employeeId);
 }
 
 }

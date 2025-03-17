@@ -33,6 +33,9 @@
             <p>{{selectedEmployee.notes}}</p>
         </div>
         <app-territories [employeeId]="selectedEmployee.employeeId"></app-territories>
+        <div class="employee-profile__drop">
+            <button class="btn btn-danger" (click)="onDropEmployee(selectedEmployee.employeeId)">Drop Employee</button>
+        </div>
     </article>
     }
 </section>

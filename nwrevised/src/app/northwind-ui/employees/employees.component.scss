@@ -56,5 +56,11 @@
         &__notes{
             font-size:small;
         }
+
+        &__drop {
+            display: flex;
+            justify-content: flex-end;
+            margin-top:20px;
+        }
     }
 }

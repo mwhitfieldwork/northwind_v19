@@ -9,12 +9,17 @@
     
         li{
             border-bottom: 1px solid #ccc;
-        }
-
-        li:hover{
-            cursor: pointer;
-            background-color: #ccc;
-            color:#fff;
+    
+            &:hover{
+                cursor: pointer;
+                background-color: #ccc;
+                color:#fff;
+            }
+    
+            &:focus {
+                background-color: #cf1414;
+                color:#fff;
+            }
         }
     }
 

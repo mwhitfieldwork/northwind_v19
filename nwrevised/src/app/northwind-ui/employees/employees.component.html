@@ -3,7 +3,7 @@
 <section id="employee-details">
     <ul>
     @for(employee of employees; track employee.employeeId){
-        <li>
+        <li tabindex="0">
             <app-employee 
             [firstName]="employee.firstName"
             [lastName]="employee.lastName"

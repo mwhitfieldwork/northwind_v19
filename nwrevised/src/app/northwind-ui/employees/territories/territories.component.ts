@@ -1,4 +1,4 @@
-import { Component, input, OnInit } from '@angular/core';
+import { Component, Input, input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-territories',
@@ -7,9 +7,11 @@ import { Component, input, OnInit } from '@angular/core';
   templateUrl: './territories.component.html',
   styleUrl: './territories.component.scss'
 })
-export class TerritoriesComponent implements OnInit {
+export class TerritoriesComponent implements OnChanges {
 isSelected: boolean = false
 territoriesList: any[] = [];
+
+@Input() employeeId!: number;
 
 territories: any[] = [
   {employeeId: 1, territoryId: 11234},
@@ -17,9 +19,13 @@ territories: any[] = [
   {employeeId: 3, territoryId: 34567}
 ];
 
-ngOnInit(): void {
-
+ngOnChanges(){
+  if (this.employeeId) {
+    this.onSelectTerritories(this.employeeId);
+  }
 }
+
+
 
 onSelectTerritories(employeeId: number) {
   this.territoriesList = this.territories;

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, OnInit, Output, ViewChild, viewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, inject, OnInit, Output, ViewChild, viewChild } from '@angular/core';
 import { EmployeeComponent } from './employee/employee.component';
 import { Employee } from '../../utilities/models/employee';
 import { TerritoriesComponent } from "./territories/territories.component";
@@ -15,30 +15,31 @@ import { EmployeeService } from '../../utilities/services/employee/employee.serv
 export class EmployeesComponent implements OnInit {
 selectedEmployee:Employee = {} as Employee;
 isLoading= false;
+isSelected = false;
 employees:Employee[] = [];
 employeesList!:Subscription;
 _employeeService = inject(EmployeeService);
  profile_pic!: string;
 
-@ViewChild(TerritoriesComponent) territoriesComponent!: TerritoriesComponent
+@Output() employeeSelected = new EventEmitter<number>();
 
 
 ngOnInit(): void {
-  console.log(this.employees)
   this.isLoading = true;
-  this.employeesList = this._employeeService.get().subscribe(
+  this.employeesList = this._employeeService.get()
+  .subscribe(
     (response) => {
-      this.isLoading= false;
-      this.employees = response
+      this.isLoading = false;
+      this.employees = response.slice(0, 7);
     }
   );
 }
 
 onSelect(employee:Employee) {
   this.selectedEmployee = employee;
-  console.log(employee, 'Employee handled at right level');
-  this.territoriesComponent.onSelectTerritories(employee.employeeId);
-  this.profile_pic = `/${employee.firstName?.toLocaleLowerCase()}.png`
+  this.isSelected = true;
+  this.profile_pic = `/${employee.firstName?.toLocaleLowerCase()}.png`;
+  this.employeeSelected.emit(employee.employeeId);
 }
 
 }

@@ -15,5 +15,5 @@ export interface Employee {
     extension?: string;
     notes?: string;
     reportsTo?: number;
-    photoPath?: string;
+    photo?: string;
 }

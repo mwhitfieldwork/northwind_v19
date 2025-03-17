@@ -1,5 +1,5 @@
 <ng-content select="h2"></ng-content>
-@if(selectedEmployee){
+
 <section id="employee-details">
     <ul>
     @for(employee of employees; track employee.employeeId){
@@ -12,7 +12,7 @@
         </li>
     }
     </ul>
-
+    @if(isSelected){
     <article class="employee-profile">
         <div class="employee-profile__greeting">
             <div class="employee-profile__name">
@@ -31,7 +31,7 @@
         <div class="employee-profile__notes">
             <p>{{selectedEmployee.notes}}</p>
         </div>
-        <app-territories #territories></app-territories>
+        <app-territories [employeeId]="selectedEmployee.employeeId"></app-territories>
     </article>
+    }
 </section>
-}

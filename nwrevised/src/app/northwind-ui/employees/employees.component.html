@@ -3,11 +3,12 @@
 <section id="employee-details">
     <ul>
     @for(employee of employees; track employee.employeeId){
-        <li tabindex="0">
+        <li>
             <app-employee 
             [firstName]="employee.firstName"
             [lastName]="employee.lastName"
             [title]="employee.title"
+            [selected]="employee.employeeId === selectedEmployee.employeeId"
             (click)="onSelect(employee)"></app-employee>    
         </li>
     }

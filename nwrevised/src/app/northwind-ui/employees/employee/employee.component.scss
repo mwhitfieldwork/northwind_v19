@@ -1,9 +1,16 @@
 .employee-item {
     display: flex;
     width:250px; 
-    padding:15px;;
+    height:45px;
+    padding-left:10px;
     font-family: 'Roboto', sans-serif;
     font-size:small;
+    align-items: center;
+
+    &.active{
+        background-color: green;
+        color:#fff;
+    }
    
     .name {
         width:100%;

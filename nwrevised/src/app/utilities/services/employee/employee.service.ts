@@ -16,7 +16,6 @@ export class EmployeeService {
 
   get(): Observable<Employee[]> {
     return this._http.get<Employee[]>(`${this.url}/Employee/`).pipe(
-      map(employees => employees.slice(0, 7)), 
       catchError(this.handleError)
     );
   }

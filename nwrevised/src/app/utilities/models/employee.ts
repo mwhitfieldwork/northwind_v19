@@ -14,7 +14,7 @@ export interface Employee {
     homePhone?: string;
     extension?: string;
     notes?: string;
-    reportsTo?: number;
+    reportsTo?: string;
     photo?: string;
     isDeleted?: boolean
 }

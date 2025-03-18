@@ -1,8 +1,15 @@
 import { inject, Injectable } from '@angular/core';
 import { Employee } from '../../models/employee';
 import { catchError, map, Observable, tap, throwError} from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    //Authorization: 'my-auth-token'
+  })
+};
 @Injectable({
   providedIn: 'root'
 })
@@ -23,6 +30,18 @@ export class EmployeeService {
       }),
       catchError(this.handleError),
     )
+  }
+
+  addEmployee(employee: Employee): Observable<Employee> {
+    let url = `${this.url}/Employee/AddEmployee`;
+    let newEmployee = JSON.stringify(employee)
+    return this._http.post<Employee>(url, newEmployee, httpOptions).pipe(
+      catchError(error => {
+        this.errorMessage = error.message;
+        console.error('There was an error!!', error);
+        throw error;
+      })
+    );
   }
 
   dropEmployee(id:number): void {

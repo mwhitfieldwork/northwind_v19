@@ -1,5 +1,9 @@
-<ng-content select="h2"></ng-content>
-
+<section id="employee-list-title">
+    <div class="add-employee">
+        <button class="btn btn-primary" (click)="onAddDialog()">Add New Employee</button>
+    </div>
+    <ng-content select="h2"></ng-content>
+</section>
 <section id="employee-details">
     <ul>
     @for(employee of employees; track employee.employeeId){
@@ -34,8 +38,17 @@
         </div>
         <app-territories [employeeId]="selectedEmployee.employeeId"></app-territories>
         <div class="employee-profile__drop">
-            <button class="btn btn-danger" (click)="onDropEmployee(selectedEmployee.employeeId)">Drop Employee</button>
+            <a href="#" class="drop-button" (click)="onDropEmployee(selectedEmployee.employeeId)">Drop Employee</a>
         </div>
     </article>
+    }
+
+    @if(isAddSelected){
+    <div>
+        <app-add-new-employee 
+        (close)="closeDialog($event)"
+        (submitFrom)="onAddEmployee($event)" 
+        ></app-add-new-employee>
+    </div>
     }
 </section>

@@ -10,6 +10,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { filter, map, take } from 'rxjs/operators';
 import { ProductsService } from '../../../utilities/services/product-table/products.service';
 
+
 @Component({
   selector: 'app-product-table',
   templateUrl: './product-table.component.html',
@@ -20,20 +21,20 @@ import { ProductsService } from '../../../utilities/services/product-table/produ
   ],
   imports: [   
     FormsModule,
-    /*MatTableModule,
+    MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    ReactiveFormsModule,*/
+    ReactiveFormsModule,
   ]
 })
 export class ProductTableComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild(MatPaginator, {static: true})
   paginator!: MatPaginator;
-  isLoading: boolean = false;
- 
-
+  
   @ViewChild(MatSort, {static: true}) sort!: MatSort;
+  isLoading: boolean = false;
+
 
   displayedColumns: string[] = [
     'displayName',
@@ -45,6 +46,7 @@ export class ProductTableComponent implements OnInit, AfterViewInit, OnDestroy {
     'delete'
   ];
 
+  products$!: Observable<Product[]>;
   products: Product[] = [];
   dataSource: MatTableDataSource<Product> = new MatTableDataSource();
   errorMessage:any;
@@ -58,26 +60,20 @@ export class ProductTableComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     this.isLoading = true;
-    this.productsList = this._productsService.getProducts().subscribe(
-      (response) => {
-        this.isLoading= false;
-        this.products = response
-      }
-    );
-  }
-
-  ngOnDestroy(): void {
-    if(this.productsList) this.productsList.unsubscribe();
+    this.products$ = this.getProducts();
   }
 
   ngAfterViewInit(): void {
-   /* this.products$.subscribe(data => {
+    this.productsList = this.products$.subscribe(data => {
+      this.isLoading = false;
       this.dataSource.data = data;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
+  }
 
-    */
+  ngOnDestroy(): void {
+    if(this.productsList) this.productsList.unsubscribe();
   }
 
   getProducts(): Observable<Product[]> {

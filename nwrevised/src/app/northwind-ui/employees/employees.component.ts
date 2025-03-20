@@ -6,13 +6,18 @@ import { Subscription } from 'rxjs';
 import { EmployeeService } from '../../utilities/services/employee/employee.service';
 import { AddNewEmployeeComponent } from "./add-new-employee/add-new-employee.component";
 import { FormGroup } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 const defaultBirthDate = new Date();
 defaultBirthDate.setFullYear(defaultBirthDate.getFullYear() - 18);
 @Component({
   selector: 'app-employees',
   standalone: true,
-  imports: [EmployeeComponent, TerritoriesComponent, AddNewEmployeeComponent],
+  imports: [
+    EmployeeComponent, 
+    TerritoriesComponent, 
+    AddNewEmployeeComponent,
+    DatePipe],
   templateUrl: './employees.component.html',
   styleUrl: './employees.component.scss'
 })
@@ -35,7 +40,7 @@ ngOnInit(): void {
   .subscribe(
     (response) => {
       this.isLoading = false;
-      this.employees = response.filter(employee => employee.isDeleted !== true).slice(0, 7);
+      this.employees = response.filter(employee => employee.isDeleted !== true);
     }
   );
 }

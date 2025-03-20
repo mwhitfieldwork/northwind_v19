@@ -1,8 +1,39 @@
+<section id="card-information">
+    <app-card class="dashboard-graph-card">
+        <article class="card">
+            <div>
+                <h3>Total Orders</h3>
+                <img src="/total-orders.png" width="100px">
+            </div>
+            <div>
+                <p>{{totalOrders}}</p>
+            </div>
+        </article>
+    </app-card>
+    <app-card class="dashboard-graph-card">
+        <article class="card">
+        <div>
+            <h3>Average Order Price</h3>
+            <img src="/average-orders.png" width="100px">
+        </div>
+        <div>   
+            <p>{{averageOrderPrice}}</p>
+        </div>
+    </article>
+    </app-card>
+</section>
+
 <section id="detail-wrapper">
-<div id="main-wrapper">
-    <app-employees>
-        <h2>Employee Details</h2>
-    </app-employees> 
-</div>
-<div id="territory-graph"></div>
+    <app-card id="employee-details">
+        <article class="card">
+            <app-employees>
+                <h2>Employee Details</h2>
+            </app-employees> 
+        </article>
+    </app-card>
+    <app-card  id="territory-graph">
+        <article class="card">
+           test
+        </article>
+    </app-card>
 </section>

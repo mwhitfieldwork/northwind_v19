@@ -2,30 +2,45 @@ h2{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size:large
 }
-#detail-wrapper{
+
+#detail-wrapper,
+#card-information {
     display: flex;
     justify-content: space-between;
 
-    #main-wrapper {
+    .card {
+        display:flex;
+        justify-content: space-between;
+        border-radius:3px;
+        border: none;
+        overflow:hidden;
+        padding:15px;
+        margin:20px 20px 0 20px;
+    }
+}
+
+
+.dashboard-graph-card {
+    width:50%;
+    
+    .card div {
+        display:flex;
+        justify-content: space-between;
+    }
+}
+
+#detail-wrapper{
+    #employee-details {
         display: flex;
         flex-direction: column;
-        margin-top:15px;
-        margin-left:20px;
-        padding:15px;
-        width:60%;
-        background-color: #fff;
-        -webkit-border-radius: 10x 10x 10x 10x;
-        border-radius: 10x 10x 10x 10x;
+        width:50%;
+        height:500px;
+
     }
     
     #territory-graph {
-        width:35%;
+        width: 50%;
         height:400px;
-        margin-top:15px;
-        margin-right:20px;
-        background-color: #fff;
-        -webkit-border-radius: 10x 10x 10x 20p10xx;
-        border-radius: 10x 10x 10x 10x;
     }
 }
 

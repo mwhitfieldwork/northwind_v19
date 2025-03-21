@@ -10,8 +10,8 @@ export const routes: Routes = [
     {path: 'stock', component: StockInventoryComponent},
     {path: 'products', component: ProductTableComponent,
         children: [
-            {path: 'details/new', component: ProductTableDetailComponent, data: {isEdit: false}},
-            {path: 'details/:id', component: ProductTableDetailComponent, data: {isEdit: true}},
+            {path: 'details/new', component: ProductTableDetailComponent},
+            {path: 'details/:id', component: ProductTableDetailComponent},
         ]
     },
 ]

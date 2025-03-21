@@ -1,4 +1,4 @@
-import {Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import{Product} from '../models/products';
@@ -8,7 +8,7 @@ import { ProductsService }from '../../../../utilities/services/product-table/pro
 
 import { Category } from '../../../../utilities/models/category';
 import { fromEvent,Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, pluck } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 import { StockCategoryService } from '../../../../utilities/services/category-stock/category-stock.service';
 
@@ -38,7 +38,9 @@ export class ProductTableDetailComponent implements OnInit{
               private _productsService: ProductsService) { }
 
   ngOnInit(): void {
-    this.isEdit = this.route.snapshot.data['isEdit'];
+    this.route.queryParams.pipe(pluck('isEdit')).subscribe(isEdit => {
+      this.isEdit = isEdit === 'true'; 
+    });
 
     console.log(this.isEdit, 'This be edit');
 
@@ -61,6 +63,7 @@ export class ProductTableDetailComponent implements OnInit{
     this.productForm.get('productname')?.valueChanges.subscribe( x => console.log(x));
 
   }
+
 
   getCategories():Observable<Category[]>{
     return this._categoryService.getCategories().pipe(
@@ -120,6 +123,11 @@ export class ProductTableDetailComponent implements OnInit{
   }
 
   closeDialogBox(){
-    this.closeDialog.emit(false);
+    //this.closeDialog.emit(false);
+    this.router.navigate(['/products']);
   }
 }
+function ngAfterViewInit() {
+  throw new Error('Function not implemented.');
+}
+

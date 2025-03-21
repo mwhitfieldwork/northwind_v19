@@ -98,7 +98,15 @@ export class ProductTableComponent implements OnInit, AfterViewInit, OnDestroy {
   AddDialog(){
     this.isOpenDialog = true;
   }
-  openDialog(): void {
+
+  onSelectProductDetails(productId:string){
+    this.router.navigate(['/products', 'details', productId], {
+      queryParams: { isEdit: true }
+    });
+    this.isOpenDialog = true;
+  }
+
+/*  openDialog(): void {
     const dialogRef = this.dialog.open(ProductTableDetailComponent, {
       data: this.products$
     });
@@ -112,7 +120,7 @@ export class ProductTableComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-/*
+
   deleteProduct(product:Product){
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       width: '450px',

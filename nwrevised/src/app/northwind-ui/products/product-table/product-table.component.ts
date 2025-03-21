@@ -6,9 +6,10 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig} from '@angular/material/dialog'
 import {FormGroup, FormControl, FormBuilder, Validators, AbstractControl, ValidatorFn, FormArray, ReactiveFormsModule, FormsModule} from '@angular/forms';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { filter, map, take } from 'rxjs/operators';
 import { ProductsService } from '../../../utilities/services/product-table/products.service';
+import { ProductTableDetailComponent } from "./product-table-detail/product-table-detail.component";
 
 
 @Component({
@@ -19,13 +20,16 @@ import { ProductsService } from '../../../utilities/services/product-table/produ
   providers: [
     ProductsService
   ],
-  imports: [   
+  imports: [
     FormsModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
     ReactiveFormsModule,
-  ]
+    RouterOutlet,
+    RouterLink,
+    ProductTableDetailComponent
+]
 })
 export class ProductTableComponent implements OnInit, AfterViewInit, OnDestroy {
 
@@ -55,8 +59,13 @@ export class ProductTableComponent implements OnInit, AfterViewInit, OnDestroy {
   index!:number
   starList:any[]  = [];
   productsList!:Subscription;
+  isEdit: boolean = false;
+  isOpenDialog:boolean = false
 
-  constructor(private _productsService: ProductsService, private router:Router) { }
+  constructor(
+    private _productsService: ProductsService, 
+    private router:Router,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.isLoading = true;
@@ -82,6 +91,27 @@ export class ProductTableComponent implements OnInit, AfterViewInit, OnDestroy {
     );
   }
   
+  closeDialog($event:boolean){
+    this.isOpenDialog = $event;
+  }
+
+  AddDialog(){
+    this.isOpenDialog = true;
+  }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ProductTableDetailComponent, {
+      data: this.products$
+    });
+
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.maxWidth = 100;
+    dialogConfig.maxHeight = 500;
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed test');
+    });
+  }
+
 /*
   deleteProduct(product:Product){
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {

@@ -11,8 +11,10 @@ import { StockInventoryComponent } from "../products/stock-inventory/stock-inven
   styleUrl: './dash.component.scss'
 })
 export class DashComponent {
-  totalOrders:number = 0;
-  averageOrderPrice:number = 0;
+  totalOrders:number = 12873;
+  averageOrderPrice:number = 5433.32;
+  averageTicketPrice:number = 708.12;
+  backpackAverage:number = 1234.09;
 
 }
 

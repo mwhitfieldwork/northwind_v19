@@ -1,39 +1,62 @@
 <section id="card-information">
-    <app-card class="dashboard-graph-card">
-        <article class="card">
-            <div>
-                <h3>Total Orders</h3>
-                <img src="/total-orders.png" width="100px">
-            </div>
-            <div>
-                <p>{{totalOrders}}</p>
-            </div>
-        </article>
-    </app-card>
-    <app-card class="dashboard-graph-card">
+    <mat-card  class="col-xs-2 col-sm-4 col-lg-8">
         <article class="card">
         <div>
-            <h3>Average Order Price</h3>
+            <h3>Average Order Price 1</h3>
             <img src="/average-orders.png" width="100px">
         </div>
         <div>   
             <p>{{averageOrderPrice}}</p>
         </div>
     </article>
-    </app-card>
+    </mat-card >
+        <mat-card class="col-xs-2 col-sm-4 col-lg-8">
+        <article class="card">
+            <div>
+                <h3>Total Orders 1</h3>
+                <img src="/total-orders.png" width="100px">
+            </div>
+            <div>
+                <p>{{totalOrders}}</p>
+            </div>
+        </article>
+        </mat-card>
+    <mat-card  class="col-sm-6 col-lg-3 ">
+        <article class="card">
+        <div>
+            <h3>Average Order Price 2</h3>
+            <img src="/average-orders.png" width="100px">
+        </div>
+        <div>   
+            <p>{{averageOrderPrice}}</p>
+        </div>
+    </article>
+    </mat-card >
+    <mat-card class="col-sm-6 col-lg-3 ">
+        <article class="card">
+            <div>
+                <h3>Total Orders 2</h3>
+                <img src="/total-orders.png" width="100px">
+            </div>
+            <div>
+                <p>{{totalOrders}}</p>
+            </div>
+        </article>
+    </mat-card>
 </section>
 
 <section id="detail-wrapper">
-    <app-card id="employee-details">
+    <mat-card   id="territory-graph">
+        <article class="card">
+           <app-stock-inventory></app-stock-inventory>
+        </article>
+    </mat-card >
+    <mat-card id="employee-details">
         <article class="card">
             <app-employees>
                 <h2>Employee Details</h2>
             </app-employees> 
         </article>
-    </app-card>
-    <app-card  id="territory-graph">
-        <article class="card">
-           test
-        </article>
-    </app-card>
+    </mat-card >
+
 </section>

@@ -1,17 +1,11 @@
-.card-information, .detail-information {
-    justify-content: space-between;
-    padding:15px;
-}
 
-.card-information {
-    .dashboard-graph-card {
-        flex-direction: row;
+
+.dashboard-cards {
+    mat-card {
         background-color: #fff;
-        border-radius: 6px;
-        align-items: center;
+        border-radius: 6px;/**/
         justify-content: space-between;
-        flex:1;
-        margin:0 10px;
+        flex-direction:row;
 
         h3 {
             margin:0;
@@ -26,7 +20,7 @@
             font-size:smaller;
         }
     
-        &__icon {
+        .dashboard-card-icon {
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -36,6 +30,7 @@
             align-items: center;
         }
     };
+
 }
 
 /*

@@ -1,3 +1,39 @@
+
+
+.dashboard-cards {
+    mat-card {
+        background-color: #fff;
+        border-radius: 6px;/**/
+        justify-content: space-between;
+        flex-direction:row;
+
+        h3 {
+            margin:0;
+            font-size:medium;
+        }
+
+        h4{
+            font-size:small;
+        }
+
+        p {
+            font-size:smaller;
+        }
+    
+        .dashboard-card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #b8c2f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    };
+
+}
+
+/*
 h2{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size:large
@@ -22,11 +58,6 @@ h2{
 
 .dashboard-graph-card {
     width:50%;
-    
-    .card div {
-        display:flex;
-        justify-content: space-between;
-    }
 }
 
 #detail-wrapper{
@@ -43,4 +74,5 @@ h2{
         height:400px;
     }
 }
+    */
 

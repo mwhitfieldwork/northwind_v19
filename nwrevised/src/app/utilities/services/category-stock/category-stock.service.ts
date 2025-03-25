@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { catchError, Observable, tap, throwError} from 'rxjs';
 import { Category } from '../../models/category';
+import { CategorySale } from '../../models/categorySale';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,18 @@ export class StockCategoryService {
 
   getCategories(): Observable<Category[]> {
     var response = this._http.get<Category[]>(`${this.url}/Category/`)
+      .pipe(
+        tap(items => {
+          console.log(items, 'Categories')
+        }),
+        catchError(this.handleError),
+      )
+
+    return response
+  }
+
+  getSalesByCategory(categoryName:string, year:string): Observable<CategorySale[]> {
+    var response = this._http.get<CategorySale[]>(`${this.url}/Category/${categoryName},${year}`)
       .pipe(
         tap(items => {
           console.log(items, 'Categories')

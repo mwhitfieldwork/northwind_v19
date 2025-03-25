@@ -1,9 +1,9 @@
 
 
-.dashboard-cards {
+.dashboard-cards, .dashboard-infomration {
     mat-card {
         background-color: #fff;
-        border-radius: 6px;/**/
+        border-radius: 6px;
         justify-content: space-between;
         flex-direction:row;
 
@@ -33,46 +33,12 @@
 
 }
 
-/*
-h2{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size:large
+.chart {
+    background-color: #fff;
+    width: 100%;
+    /*height:600px;*/
+    margin:15px 0;
+    border-radius: 3px;
+    overflow:hidden;
 }
-
-#detail-wrapper,
-#card-information {
-    display: flex;
-    justify-content: space-between;
-
-    .card {
-        display:flex;
-        justify-content: space-between;
-        border-radius:3px;
-        border: none;
-        overflow:hidden;
-        padding:15px;
-        margin:20px 20px 0 20px;
-    }
-}
-
-
-.dashboard-graph-card {
-    width:50%;
-}
-
-#detail-wrapper{
-    #employee-details {
-        display: flex;
-        flex-direction: column;
-        width:50%;
-        height:500px;
-
-    }
-    
-    #territory-graph {
-        width: 50%;
-        height:400px;
-    }
-}
-    */
 

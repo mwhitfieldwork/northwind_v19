@@ -60,19 +60,19 @@
         </div>
     </section>
 
-    <section class="detail-information ">
-        <mat-card   id="territory-graph">
-            <article class="card">
-            <app-stock-inventory></app-stock-inventory>
-            </article>
-        </mat-card >
-        <!--<mat-card id="employee-details">
-            <article class="card">
-                <app-employees>
-                    <h2>Employee Details</h2>
-                </app-employees> 
-            </article>
-        </mat-card > -->
+    <section class="detail-information row">
+        <div class="col">
+            <mat-card class="p-3 mb-4">
+                <article class="card">
+                <app-stock-inventory></app-stock-inventory>
+                </article>
+            </mat-card>
+        </div>
 
+        <div class="col">
+            <article class="chart">
+                <app-chart-1></app-chart-1>
+            </article>
+        </div>
     </section>
 </div>

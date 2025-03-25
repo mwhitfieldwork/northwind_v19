@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { EmployeesComponent } from "../employees/employees.component";
 import { MatCardModule } from '@angular/material/card';
 import { StockInventoryComponent } from "../products/stock-inventory/stock-inventory.component";
+import { Chart1Component } from "./chart-1/chart-1.component";
 
 @Component({
   selector: 'app-dash',
   standalone: true,
-  imports: [ EmployeesComponent, MatCardModule, StockInventoryComponent],
+  imports: [EmployeesComponent, MatCardModule, StockInventoryComponent, Chart1Component],
   templateUrl: './dash.component.html',
   styleUrl: './dash.component.scss'
 })

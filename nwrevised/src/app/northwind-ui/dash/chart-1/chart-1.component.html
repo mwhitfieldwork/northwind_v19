@@ -1,12 +1,4 @@
 <svg width="300" height="300" class="bar-chart">
-    @for (item of data; track item; let i = $index) {
-      <rect 
-       [attr.x]="i * rectWidth + 0.5 * padding + outerPadding  + 75" 
-       [attr.y]="innerHeight - (innerHeight/max) * item" 
-       [attr.width]="bandwidth"
-       [attr.height]="(innerHeight/max) * item" 
-       style="fill:black"></rect>
-    }
     <!-- Horizontal lines -->
     <line x1="100" y1="75" [attr.x2]="this.dimensions.width -75" y2="75" class="grid"></line>
     <line x1="100" y1="135" [attr.x2]="this.dimensions.width -75" y2="135" class="grid"></line>
@@ -14,6 +6,23 @@
     <line x1="100" y1="255" [attr.x2]="this.dimensions.width -75"  y2="255" class="grid"></line>
     <line x1="100" y1="315" [attr.x2]="this.dimensions.width -75"  y2="315" class="grid"></line>
     <line x1="100" y1="360" [attr.x2]="this.dimensions.width -75"  y2="360" class="grid"></line>
+    
+    @for (item of data; track item; let i = $index) {
+        <defs>
+            <linearGradient id="myGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#31f7e0;stop-opacity:1" />
+                <stop offset="85%" style="stop-color:#7db9e8;stop-opacity:1" />
+            </linearGradient>
+        </defs>
+        
+      <rect 
+       [attr.x]="i * rectWidth + 0.5 * padding + outerPadding  + 75" 
+       [attr.y]="innerHeight - (innerHeight/max) * item" 
+       [attr.width]="bandwidth"
+       [attr.height]="(innerHeight/max) * item" 
+       [attr.fill]="'url(#myGradient)'"></rect>
+    }
+
     <!-- Vertical lines 
     <line x1="100" y1="0" x2="100" y2="400" class="grid"></line>
     <line x1="200" y1="0" x2="200" y2="400" class="grid"></line>

@@ -25,7 +25,7 @@
     <line x1="100" y1="315" [attr.x2]="this.dimensions.width -75"  y2="315" class="grid"></line>
     <line x1="100" y1="360" [attr.x2]="this.dimensions.width -75"  y2="360" class="grid"></line>
 
-    @for (item of data; track item; let i = $index) {
+    @for (item of data; track i; let i = $index) {
         <defs>
             <linearGradient id="myGradient" x1="0%" y1="0%" x2="0%" y2="100%">
                 <stop offset="0%" style="stop-color:#31f7e0;stop-opacity:1" />
@@ -33,12 +33,16 @@
             </linearGradient>
         </defs>
         
-      <rect 
-       [attr.x]="i * rectWidth + 0.5 * padding + outerPadding  + 75" 
-       [attr.y]="innerHeight - (innerHeight/max) * item" 
-       [attr.width]="bandwidth"
-       [attr.height]="(innerHeight/max) * item" 
-       [attr.fill]="'url(#myGradient)'"></rect>
+        <rect 
+        [attr.x]="i * rectWidth + 0.5 * padding + outerPadding + 75" 
+        [attr.y]="innerHeight - (innerHeight * item / max)" 
+        [attr.width]="bandwidth" 
+        [attr.height]="innerHeight * item / max" 
+        [attr.fill]="'url(#myGradient)'"
+        [matTooltip]="xFullLabels[i]"
+        matTooltipPosition="above">
+      </rect>
+      
     }
 
     <!-- Vertical lines 
@@ -50,13 +54,13 @@
     <line x1="600" y1="0" x2="600" y2="400" class="grid"></line>-->  
     
     <!--<path d="M100, 100L100, 200H200l0, -100h-100" fill="green" style="stroke:red"></path> -->
-    @for(label of xlabels; track label; let i = $index) {
+    @for(label of xlabels; track i; let i = $index) {
         <text 
         [attr.x]="i * rectWidth + 0.5 * padding + outerPadding + 0.5 *bandwidth + 75" 
         [attr.y]="dimensions.height - 0.5 * bottom" 
         fill="black" 
         dx="5"
-        style="text-anchor: start;  dominant-baseline: text-after-edge">
+        style="text-anchor: middle;  font-size:x-small">
         {{label}}</text>
     }
     
@@ -67,7 +71,7 @@
         [attr.y]="80 + (reverseIndex *60)" 
         fill="black" 
         dx="5"
-        style="">
+        >
         {{ylabels[reverseIndex]}}</text>
     }
 </svg>

@@ -16,6 +16,7 @@ export class Chart1Component implements OnInit {
 
 rectWidth = 10;
 max:number = 250;
+maxHeight = 0;
 dimensions!: DOMRect;
 outerPadding= 50;
 padding = 0;
@@ -85,6 +86,9 @@ ngOnInit(): void {
           : x.productName
       ).slice(0,8);
       
+      this.maxHeight = Math.max(...this.data);
+      console.log(this.maxHeight);
+
       this.xFullLabels = sales.map((x) => x.productName) //full labels to reveal full names by tooltip
       
     });

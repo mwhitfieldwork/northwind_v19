@@ -33,16 +33,12 @@
             </linearGradient>
         </defs>
         
-        <rect 
-        [attr.x]="i * rectWidth + 0.5 * padding + outerPadding + 75" 
-        [attr.y]="innerHeight - (innerHeight * item / max)" 
-        [attr.width]="bandwidth" 
-        [attr.height]="innerHeight * item / max" 
-        [attr.fill]="'url(#myGradient)'"
-        [matTooltip]="xFullLabels[i]"
-        matTooltipPosition="above">
-      </rect>
-      
+      <rect 
+       [attr.x]="i * rectWidth + 0.5 * padding + outerPadding  + 75" 
+       [attr.y]="innerHeight - (innerHeight/max) * item" 
+       [attr.width]="bandwidth"
+       [attr.height]="(innerHeight/max) * item" 
+       [attr.fill]="'url(#myGradient)'"></rect>
     }
 
     <!-- Vertical lines 
@@ -60,18 +56,18 @@
         [attr.y]="dimensions.height - 0.5 * bottom" 
         fill="black" 
         dx="5"
-        style="text-anchor: middle;  font-size:x-small">
+        style="text-anchor: start;  dominant-baseline: text-after-edge">
         {{label}}</text>
     }
     
-    @for(label of ylabels; track label; let i = $index) {
+    @for(label of ylabels; track i; let i = $index) {
         @let reverseIndex = ylabels.length - 1 - i;
         <text 
         [attr.x]="35" 
         [attr.y]="80 + (reverseIndex *60)" 
         fill="black" 
         dx="5"
-        >
+        style="">
         {{ylabels[reverseIndex]}}</text>
     }
 </svg>

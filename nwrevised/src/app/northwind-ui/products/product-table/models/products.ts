@@ -1,5 +1,5 @@
 import { Category } from "./category";
-import { OrderDetails } from "./order-detail";
+import { OrderDetails } from "../../../../utilities/models/order-detail";
 import { Supplier } from "./supplier";
 
 export interface Product {

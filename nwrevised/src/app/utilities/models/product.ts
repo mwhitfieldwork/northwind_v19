@@ -1,5 +1,5 @@
 import { Category } from "../../northwind-ui/products/product-table/models/category";
-import { OrderDetails } from "../../northwind-ui/products/product-table/models/order-detail";
+import { OrderDetails } from "./order-detail";
 import { Supplier } from "../../northwind-ui/products/product-table/models/supplier";
 
 export interface ProductModel {

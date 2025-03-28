@@ -1,0 +1,17 @@
+mat-table {
+    tr{
+        display:flex;
+
+        td,th  {
+            padding:10px;
+        }
+
+        td {
+            flex-grow: 1;
+        }
+
+        th {
+            flex-grow: 1
+        }
+    }
+}

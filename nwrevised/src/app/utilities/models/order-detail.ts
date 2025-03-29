@@ -1,5 +1,6 @@
 export interface OrderDetails {
     orderId: number,
+    pkID:number,
     productId: number,
     unitPrice: number,
     quantity: number,

@@ -44,6 +44,11 @@
 .detail-information {
     mat-card {
         flex-direction:column;
+
+    .orders{
+        margin-top:20px;
+    }
+
     }
 }
 

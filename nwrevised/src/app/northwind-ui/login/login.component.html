@@ -1,0 +1,16 @@
+<mat-card class="p-3 mb-4">
+    <app-auth-form (submitted)="createUser($event)">
+        <h3>Sign Up</h3>
+        <button 
+        type="submit"
+        class="btn btn-secondary" 
+        >Submit</button>
+    </app-auth-form>
+    <app-auth-form (submitted)="loginUser($event)">
+        <h3>Log In</h3>  
+        <button 
+        type="submit"
+        class="btn btn-warning" 
+        >Submit</button>  
+    </app-auth-form>
+</mat-card>

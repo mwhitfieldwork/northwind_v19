@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormsModule } from '@angular/forms';
 import { Authentication } from '../../../utilities/models/authentication';
 
@@ -10,6 +10,7 @@ import { Authentication } from '../../../utilities/models/authentication';
   styleUrl: './auth-form.component.scss'
 })
 export class AuthLoginComponent {
+  @Input() signInErrorMessage!: string;
 
   @Output() submitted = new EventEmitter<Authentication>()
 

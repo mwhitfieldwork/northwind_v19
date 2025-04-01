@@ -4,6 +4,12 @@
             <li id="logo"><a routerLink="/dashboard" routerLinkActive="active"><img src="/hammer_star.jpeg"></a></li>
             <li><a routerLink="/products" routerLinkActive="active">Product</a></li>
             <!--<li><a routerLink="/stock" routerLinkActive="active">Restock</a></li> -->
+            <li>
+                @if(user){
+                    <span class="user">Welcome, {{(user.userName)}}</span>          
+                }
+                <a href="#" (click)="Logout()">Logout</a>
+            </li>
         </ul>
     </nav>
 </section>

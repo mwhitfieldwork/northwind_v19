@@ -24,6 +24,15 @@
         color:#fff;
         display: block ;
     }
+
+    & li:last-child{
+        border-right: none;
+        align-items: end;
+
+        & a {
+            padding-left: 15px;
+        }
+    }
      
 }
 

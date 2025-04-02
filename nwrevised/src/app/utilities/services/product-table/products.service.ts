@@ -22,19 +22,12 @@ private _http = inject(HttpClient);
   url:string = 'https://localhost:7216';
   errorMessage:any;
 
-  //nwDataChanged: BehaviorSubject<any>;
-
-  constructor() {
-    //this.nwDataChanged = new BehaviorSubject([]);
-  }
-
   getProducts(): Observable<Product[]> {
     var response = this._http.get<Product[]>(`${this.url}/Product`)
       .pipe(
         map(products => products.slice(0, 10)), 
         tap(items => {
-          //this.nwDataChanged.next(items);
-          console.log(this.url)
+          //console.log(this.url)
         }),
         catchError(this.handleError),
       )
@@ -60,8 +53,7 @@ private _http = inject(HttpClient);
     var response = this._http.get<Product>(url)
       .pipe(
         tap(item => {
-          //this.nwDataChanged.next(item);
-          console.log(item)
+          //console.log(item)
         }),
         catchError(this.handleError),
       )

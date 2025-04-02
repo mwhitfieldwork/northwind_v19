@@ -38,11 +38,11 @@ isLoading: boolean = false;
 
 
 displayedColumns: string[] = [
+   'select',
   'productName',
   'unitPrice',
   'quantity',
-  'discount',
-  'select'
+  'discount'
 ];
 
 ngAfterViewInit(): void {
@@ -59,7 +59,7 @@ ngAfterViewInit(): void {
     this.dataSource.data = data;
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    console.log(data);
+    //console.log(data);
   });
 }
 
@@ -69,16 +69,15 @@ ngAfterViewInit(): void {
 
   addToEmailList(order:OrderDetails){
     this.orderHistory.push(order);
-    console.log(this.orderHistory, "Order added to email");
+    //console.log(this.orderHistory, "Order added to email");
   }
 
   removeFromEmailList(row:OrderDetails){
     const index = this.orderHistory.findIndex(item => item.pkID === row.pkID);
-    console.log(index, "INDEXXXX")
     if (index !== -1) {
         this.orderHistory.splice(index, 1);
     }
-    console.log(this.orderHistory, "Order removed to email");
+    //console.log(this.orderHistory, "Order removed to email");
   }
 
   onCheckboxChange(event: MatCheckboxChange, row: any): void {

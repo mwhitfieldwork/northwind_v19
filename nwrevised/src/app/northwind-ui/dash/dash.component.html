@@ -1,3 +1,8 @@
+@if(isLoading){
+    <div class="loading-container">
+        <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+    </div>
+  }
 <div class="dashboard-container row p-3">
     <section class="dashboard-cards row row-cols-lg-4 row-cols-md-2 row-cols-1">
         <div class="col">
@@ -64,7 +69,7 @@
         <div class="col">
             <mat-card class="p-3 mb-4">
                 <article class="d-block gap-3"> 
-                    <h3 class="text-uppercase text-secondary">Order History</h3>
+                    <h3 class="text-uppercase text-secondary">Order Details</h3>
                 </article>
                 <article class="orders">
                     <app-order-history></app-order-history>
@@ -82,5 +87,14 @@
                 </article>
             </mat-card>
         </div>
+    </section>
+
+    <section class="employee-information row">
+        <mat-card class="p-3 mb-4">
+            <article class="d-block gap-3">
+                <h3 class="text-uppercase text-secondary">Employee Details</h3>
+                <app-employees></app-employees>
+            </article>
+        </mat-card>
     </section>
 </div>

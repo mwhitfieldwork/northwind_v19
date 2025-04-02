@@ -1,6 +1,6 @@
 
 
-.dashboard-cards, .detail-information {
+.dashboard-cards, .detail-information, .employee-information {
     mat-card {
         background-color: #fff;
         border-radius: 6px;
@@ -9,6 +9,7 @@
             margin:0;
             font-size:medium;
             height:25px;
+            white-space: nowrap;
         }
 
         h4{
@@ -49,6 +50,12 @@
         margin-top:20px;
     }
 
+    }
+}
+
+.employee-information {
+    mat-card {
+        width:50%;
     }
 }
 

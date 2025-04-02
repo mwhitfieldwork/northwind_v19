@@ -30,7 +30,7 @@ getUser(){
   if(this.userId) {
     this._userSessionService.getUser(this.userId).subscribe((response) => {
       this.user = response
-      console.log(response, "Response");
+      //console.log(response, "Response");
     });
   }
 
@@ -39,7 +39,9 @@ getUser(){
 Logout() {
   localStorage.removeItem('user');
   this.user = null;
-  this.router.navigate(['']);
+  this.router.navigate(['']).then(() => {
+    window.location.reload();
+});
 }
 
 }

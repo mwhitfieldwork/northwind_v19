@@ -1,4 +1,11 @@
 <ng-content select="h1"></ng-content>
+
+@if(isLoading){
+  <div class="loading-container">
+      <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+  </div>
+}
+
 <div id="main-wrapper">
   <div>
     <mat-table mat-table [dataSource]="dataSource" matSort class="table-mat mat-elevation-z8">
@@ -65,7 +72,7 @@
   </div>
   </div>
 
-  @if(isOpenDialog){
+@if(isOpenDialog){
 <router-outlet ></router-outlet>
 }
 

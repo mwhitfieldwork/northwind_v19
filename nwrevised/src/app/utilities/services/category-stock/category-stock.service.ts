@@ -18,7 +18,7 @@ export class StockCategoryService {
     var response = this._http.get<Category[]>(`${this.url}/Category/`)
       .pipe(
         tap(items => {
-          console.log(items, 'Categories')
+          //console.log(items, 'Categories')
         }),
         catchError(this.handleError),
       )
@@ -30,7 +30,7 @@ export class StockCategoryService {
     var response = this._http.get<CategorySale[]>(`${this.url}/Category/${categoryName},${year}`)
       .pipe(
         tap(items => {
-          console.log(items, 'Categories')
+         // console.log(items, 'Categories')
         }),
         catchError(this.handleError),
       )

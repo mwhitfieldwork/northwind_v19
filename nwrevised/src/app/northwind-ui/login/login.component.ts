@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ViewEncapsulation } from '@angular/core';
 import { AuthLoginComponent } from "./auth-form/auth-form.component";
 import { Authentication } from '../../utilities/models/authentication';
 import { MatCardModule } from '@angular/material/card';
@@ -11,7 +11,8 @@ import { UserSessionService } from '../../utilities/services/user-session/user-s
   standalone: true,
   imports: [AuthLoginComponent, MatCardModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrl: './login.component.scss',
+  encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent {
 private _loginService = inject(LoginService)

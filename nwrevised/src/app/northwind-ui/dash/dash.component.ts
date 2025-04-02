@@ -5,6 +5,7 @@ import { StockInventoryComponent } from "../products/stock-inventory/stock-inven
 import { Chart1Component } from "./chart-1/chart-1.component";
 import { OrderHistoryComponent } from "../order-history/order-history.component";
 import { UserSessionService } from '../../utilities/services/user-session/user-session.service';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-dash',
   standalone: true,
@@ -18,9 +19,22 @@ export class DashComponent implements OnInit {
   averageTicketPrice:number = 708.12;
   backpackAverage:number = 1234.09;
   private  _userSessionService = inject(UserSessionService);
+  data: any;
+  isLoading = true;
 
-  ngOnInit(): void {
+
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    // Access resolved data
+    this.data = this.route.snapshot.data['data'].dataFromService1;
+
+    // Set loading to false once data is ready
+    this.isLoading = false;
+
+    console.log(this.data); // Logs the resolved data
   }
+
 
 }
 

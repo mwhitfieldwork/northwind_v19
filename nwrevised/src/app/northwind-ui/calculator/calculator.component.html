@@ -37,7 +37,7 @@
     <pre>{{form.value | json}}</pre>
 </form>
 
-@if(dataSource){
+@if(isCalculated){
     <mat-card>
         <app-basic-table [dataSource]="dataSource" [displayedColumns]="displayedColumns"></app-basic-table>
     </mat-card>

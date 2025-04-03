@@ -2,12 +2,18 @@ import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CalcModel } from '../../utilities/models/calc.model';
-import { GenericTableComponent } from "../../shared/generic-table/generic-table.component";
+import { BasicTableComponent } from "../../shared/basic-table/basic-table.component";
+import { MatTableDataSource } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-calculator',
   standalone: true,
-  imports: [FormsModule, JsonPipe, GenericTableComponent],
+  imports: [
+    FormsModule, 
+    JsonPipe, 
+    MatCardModule,
+    BasicTableComponent],
   templateUrl: './calculator.component.html',
   styleUrl: './calculator.component.scss'
 })
@@ -17,7 +23,15 @@ export class CalculatorComponent {
   enteredExpectedReturn = '5';
   enteredDuration = '10';
   investmentCalucationData:any[] = [];
-  displayedColumns = ['year', 'interest', 'valueEndOfYear', 'annualInvestment', 'totalInterest', 'totalAmountInvested'];
+  dataSource:any; //come back to this datatype
+  displayedColumns = [
+    {columnDef:'year', header:'Year'}, 
+    {columnDef:'interest', header:'Interest'}, 
+    {columnDef:'valueEndOfYear', header:'End Of Year Value'},
+    {columnDef:'annualInvestment', header:'Annual Investment'},
+    {columnDef:'totalInterest', header:'Total Interest'},
+    {columnDef:'totalAmountInvested', header:'Total Amount Invested'}
+  ];
 
 
   calculateInvestmentResults(data:CalcModel) {
@@ -44,7 +58,7 @@ export class CalculatorComponent {
       });
     }
     
-    this.investmentCalucationData = annualData;
+    this.dataSource = annualData;
   
     return annualData;
   }

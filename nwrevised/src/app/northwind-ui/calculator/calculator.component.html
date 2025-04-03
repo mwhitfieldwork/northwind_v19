@@ -36,3 +36,9 @@
 
     <pre>{{form.value | json}}</pre>
 </form>
+
+@if(dataSource){
+    <mat-card>
+        <app-basic-table [dataSource]="dataSource" [displayedColumns]="displayedColumns"></app-basic-table>
+    </mat-card>
+}

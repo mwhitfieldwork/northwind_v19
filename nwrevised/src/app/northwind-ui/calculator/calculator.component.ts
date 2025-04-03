@@ -1,10 +1,11 @@
 import { JsonPipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CalcModel } from '../../utilities/models/calc.model';
 import { BasicTableComponent } from "../../shared/basic-table/basic-table.component";
 import { MatTableDataSource } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
+import { TooltipDirective } from '../../shared/tooltip/tooltip.directive';
 
 @Component({
   selector: 'app-calculator',
@@ -13,17 +14,20 @@ import { MatCardModule } from '@angular/material/card';
     FormsModule, 
     JsonPipe, 
     MatCardModule,
-    BasicTableComponent],
+    BasicTableComponent,
+    TooltipDirective],
   templateUrl: './calculator.component.html',
   styleUrl: './calculator.component.scss'
 })
 export class CalculatorComponent {
-  enteredInitialInvestment = '0';
-  enteredAnnualInvestment = '0';
-  enteredExpectedReturn = '5';
-  enteredDuration = '10';
+  enteredInitialInvestment = signal('0'); //'0';
+  enteredAnnualInvestment = signal('0'); //'0';
+  enteredExpectedReturn = signal('5'); //'5';
+  enteredDuration = signal('10'); //'10';
   investmentCalucationData:any[] = [];
-  dataSource:any; //come back to this datatype
+  isCalculated = false;
+  dataSource = new MatTableDataSource(this.investmentCalucationData); //come back to this datatype
+  
   displayedColumns = [
     {columnDef:'year', header:'Year'}, 
     {columnDef:'interest', header:'Interest'}, 
@@ -58,18 +62,18 @@ export class CalculatorComponent {
       });
     }
     
-    this.dataSource = annualData;
-  
+    this.dataSource.data = annualData;
+    this.isCalculated = true;
     return annualData;
   }
 
 
   onSubmit(data: CalcModel){
     const calcData ={
-      initialInvestment: +this.enteredInitialInvestment, //+ converts the string to a number
-      duration:  +this.enteredDuration,
-      annualInvestment:  +this.enteredAnnualInvestment,
-      expectedReturn:  +this.enteredExpectedReturn
+      initialInvestment: +this.enteredInitialInvestment(), //+ converts the string to a number
+      duration:  +this.enteredDuration(),
+      annualInvestment:  +this.enteredAnnualInvestment(),
+      expectedReturn:  +this.enteredExpectedReturn()
     }
     this.calculateInvestmentResults(calcData);
   }

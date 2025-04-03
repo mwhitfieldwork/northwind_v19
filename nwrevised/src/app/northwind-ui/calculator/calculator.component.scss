@@ -1,5 +1,10 @@
 /* implement of this application was from udemy course */
 
+
+::ng-deep .mat-sidenav-content {
+  background-color: #000e03; /* Change to your desired color */
+}
+
 form {
     padding: 1rem;
     max-width: 30rem;
@@ -55,3 +60,4 @@ form {
     width:50%;
     margin:15px auto;
   }
+  

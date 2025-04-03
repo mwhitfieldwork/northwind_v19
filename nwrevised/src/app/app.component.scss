@@ -1,9 +1,11 @@
 
-  mat-sidenav-content {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
+mat-sidenav-container {
+  height: 100vh; /* Fill the viewport vertically */
+  width: 100%; /* Use the full width of the screen */
+  overflow: hidden; /* Prevent any overflow */
+  box-sizing: border-box; /* Ensure padding is included in the width/height */
+}
+
   
   router-outlet {
     flex: 1;

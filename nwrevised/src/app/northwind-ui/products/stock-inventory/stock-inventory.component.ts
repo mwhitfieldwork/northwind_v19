@@ -62,7 +62,7 @@ export class StockInventoryComponent implements OnInit, OnDestroy {
   constructor(private fb: FormBuilder) { // fb is now available
     this.form = this.fb.group({
       store: this.fb.group({
-        branch: '',
+        customer: '',
         code: '',
       }),
       selector: this.fb.group({
@@ -82,8 +82,6 @@ export class StockInventoryComponent implements OnInit, OnDestroy {
       quantity: this.fb.control(stockItem.quantity)
     });
   }
-
-  
   addStock(value:any){
     console.log(value, 'Value')
     const control = this.form.get('stock') as FormArray;
@@ -95,6 +93,7 @@ export class StockInventoryComponent implements OnInit, OnDestroy {
     control.removeAt(index);
     console.log(group, index) 
   }
+
   onSubmit(){
     console.log('Submit', this.form.value)
   }

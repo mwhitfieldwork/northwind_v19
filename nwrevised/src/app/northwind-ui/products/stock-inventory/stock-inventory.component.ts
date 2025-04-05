@@ -7,7 +7,10 @@ import { JsonPipe } from '@angular/common';
 import {ProductModel} from "../../../utilities/models/product"
 import { StockCategoryService } from '../../../utilities/services/category-stock/category-stock.service'
 import { Category } from '../../../utilities/models/category';
-import { Subscription } from 'rxjs';
+import { map, Subscription } from 'rxjs';
+import { CutomerService } from '../../../utilities/services/customer-info/cutomer.service';
+import { DistinctCustomer } from '../../../utilities/models/distinctCustomers.model';
+import { CustomerProducts } from '../../../utilities/models/customerProducts.model';
 
 @Component({
   selector: 'app-stock-inventory',
@@ -23,6 +26,13 @@ import { Subscription } from 'rxjs';
 
 //Creating a small feature that allows product to be ordered
 export class StockInventoryComponent implements OnInit, OnDestroy {
+  private _customerService = inject(CutomerService);
+
+  customerList!:Subscription;
+  topCustomers: DistinctCustomer[] = [];
+  customerProductsList!:Subscription;
+  customerProducts: CustomerProducts[] = [];
+  
   products: ProductModel[] =[
     {categoryId:2,
       unitPrice: 20,
@@ -49,6 +59,8 @@ export class StockInventoryComponent implements OnInit, OnDestroy {
         this.categories = response
       }
     );
+
+    this.getCustomers();
   }
 
   ngOnDestroy(): void {
@@ -92,6 +104,40 @@ export class StockInventoryComponent implements OnInit, OnDestroy {
     const control = this.form.get('stock') as FormArray;
     control.removeAt(index);
     console.log(group, index) 
+  }
+
+  getCustomers(): void {
+    this.customerList = this._customerService.getCustomers()
+    .pipe(
+      map(customers => {
+        return customers.map((customer, index) => ({
+          ...customer, 
+          pkID: index + 1
+        }));
+      })
+    )
+    .subscribe(
+      (response) => {
+        this.topCustomers = response
+        //console.log(this.topCustomers, "TOP CUSTOMERS");
+      });
+  }
+
+  getProductsByCustomer(id:string): void {
+    this.customerProductsList = this._customerService.getProductsByCustomer(id)
+    .pipe(
+      map(customers => {
+        return customers.map((customer, index) => ({
+          ...customer, 
+          pkID: index + 1
+        }));
+      })
+    )
+    .subscribe(
+      (response) => {
+        this.customerProducts = response
+        console.log(this.customerProducts, "Products for customer");
+      });
   }
 
   onSubmit(){

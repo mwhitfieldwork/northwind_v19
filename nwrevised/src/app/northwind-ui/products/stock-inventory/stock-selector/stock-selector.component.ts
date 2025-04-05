@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, input, Output } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Category } from '../../../../utilities/models/category';
+import { CustomerProducts } from '../../../../utilities/models/customerProducts.model';
 @Component({
   selector: 'stock-selector',
   standalone: true,
@@ -10,7 +11,7 @@ import { Category } from '../../../../utilities/models/category';
 })
 export class StockSelectorComponent {
   parent = input<FormGroup>(new FormGroup({})); 
-  categories = input<Category[]>([]);
+  customerProducts = input<CustomerProducts[]>([]);
   @Output() added = new EventEmitter<any>();
 
   onAdd(){

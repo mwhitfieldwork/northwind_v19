@@ -16,38 +16,21 @@ import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 })
 export class StockBranchComponent implements OnInit {
   parent = input<FormGroup>(new FormGroup({})); 
-  private _customerService = inject(CutomerService)
-  customerList!:Subscription;
-  topCustomers: DistinctCustomer[] = [];
-  @Output() slectedCustomer = new EventEmitter<any>()
+  @Input() topCustomers: DistinctCustomer[] = [];
+  @Output() selectedCustomer = new EventEmitter<any>()
 
 
   ngOnInit(): void {
-    this.getCustomers();
+    //this.getCustomers();
 
     const storeGroup = this.parent().get('store') as FormGroup;
 
     storeGroup.get('customer')?.valueChanges.subscribe(value => {
-      console.log('Selected customer:', value);
-      this.slectedCustomer.emit(value);
+      console.log('Selected customer:', value.customerID)
+      this.selectedCustomer.emit(value.customerID);
     });
   }
 
-  getCustomers(): void {
-    this.customerList = this._customerService.getCustomers()
-    .pipe(
-      map(customers => {
-        return customers.map((customer, index) => ({
-          ...customer, 
-          pkID: index + 1
-        }));
-      })
-    )
-    .subscribe(
-      (response) => {
-        this.topCustomers = response
-        console.log(this.topCustomers, "TOP CUSTOMERS");
-      });
-  }
+
 
 }

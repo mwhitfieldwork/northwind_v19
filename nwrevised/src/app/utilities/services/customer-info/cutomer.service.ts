@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { DistinctCustomer } from '../../models/distinctCustomers.model';
 import { catchError, Observable, tap, throwError } from 'rxjs';
+import { CustomerProducts } from '../../models/customerProducts.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,19 @@ export class CutomerService {
       .pipe(
         tap(items => {
           console.log(items, 'Categories')
+        }),
+        catchError(this.handleError),
+      )
+
+    return response
+  }
+
+  getProductsByCustomer(id:string): Observable<CustomerProducts[]> {
+    console.log(id, 'ID')
+    var response = this._http.get<CustomerProducts[]>(`${this.url}/Category/${id}`)
+      .pipe(
+        tap(items => {
+          console.log(items, 'Cutomer Products')
         }),
         catchError(this.handleError),
       )

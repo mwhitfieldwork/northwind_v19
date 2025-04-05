@@ -5,6 +5,37 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled), .mat-mdc-form-field-focus-overlay {
+  background-color: unset !important;
+}
+
+.mat-mdc-form-field:not(.mat-form-field-no-animations) .mdc-text-field__input {
+  border: solid 1px #ccc;
+  padding:5px;
+}
+
+.mdc-line-ripple {
+  display: none;
+}
+
+.mat-mdc-form-field .mat-mdc-floating-label.mdc-floating-label {
+  margin-top: 12px;
+  margin-left:10px;
+  background-color:#fff;
+}
+
+mat-select {
+  border:solid 1px #ccc;
+  padding:5px;
+
+  & .mat-mdc-select-arrow {
+    display: flex;
+    align-self: self-end;
+  }
+}
+
+
 body {
   font-family: 'Roboto', sans-serif !important;
   background-color: #f3f6f8;

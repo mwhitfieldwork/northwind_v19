@@ -14,7 +14,7 @@ export class StockProductsComponent implements OnInit{
   stocks = computed(() => (this.parent().get('stock') as FormArray).controls);
 
   ngOnInit(): void {
-    console.log(this.stocks)
+    //console.log(this.stocks)
   }
 
   onRemove(group:any, index:number){

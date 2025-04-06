@@ -78,21 +78,31 @@ export class StockInventoryComponent implements OnInit, OnDestroy {
         code: '',
       }),
       selector: this.fb.group({
-        category_id: '',
-        quantity: 10
+        customerID: 0,
+        categoryName: '',
+        productName: '',
+        orderDate: '',
+        productID: 0,
+        unitPrice: 0,
+        quantity: 90
       }),
-      stock: this.fb.array([ // Corrected to use this.fb.array
-        this.createStock({ category_id: 1, quantity: 60 }),
-        this.createStock({ category_id: 3, quantity: 30 })
+      stock: this.fb.array([
       ])
     });
   }
 
-  createStock(stockItem: { category_id: number; quantity: number }) {
-    return this.fb.group({
-      category_id: this.fb.control(stockItem.category_id),
-      quantity: this.fb.control(stockItem.quantity)
-    });
+  createStock(stockItem:CustomerProducts) {
+
+    return this.fb.group(
+      {
+        customerID: this.fb.control(stockItem.customerID),
+        categoryName: this.fb.control(stockItem.categoryName),
+        productName: this.fb.control(stockItem.productName),
+        orderDate: this.fb.control(stockItem.orderDate),
+        productID: this.fb.control(stockItem.productID),
+        unitPrice: this.fb.control(stockItem.unitPrice),
+        quantity: this.fb.control(stockItem.quantity)
+      });
   }
   addStock(value:any){
     console.log(value, 'Value')
@@ -136,7 +146,7 @@ export class StockInventoryComponent implements OnInit, OnDestroy {
     .subscribe(
       (response) => {
         this.customerProducts = response
-        console.log(this.customerProducts, "Products for customer");
+        //console.log(this.customerProducts, "Products for customer");
       });
   }
 

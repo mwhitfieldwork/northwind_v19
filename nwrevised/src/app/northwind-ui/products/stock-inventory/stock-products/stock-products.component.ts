@@ -1,10 +1,11 @@
+import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit, Output, EventEmitter, computed, input } from '@angular/core';
 import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'stock-products',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, DatePipe],
   templateUrl: './stock-products.component.html',
   styleUrl: './stock-products.component.scss'
 })

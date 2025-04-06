@@ -5,4 +5,5 @@ export interface CustomerProducts {
     categoryName:string;
     unitPrice :number;
     orderDate:Date;
+    quantity:number
 }

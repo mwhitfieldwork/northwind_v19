@@ -3,8 +3,9 @@
      @for (item of stocks(); track item) {
         <div formArrayName="stock" class="stock-category-list" >
             <span [formGroupName]="$index"> <!--$index is built into the @form-->
-                 {{item.value.category_id}} <!--Ties the formgroup to the index in the array-->
+                 {{item.value.productID}} <!--Ties the formgroup to the index in the array-->
             </span>
+            <span>{{item.value.productName}}</span>
             <input 
             type="number" 
             step="10"
@@ -12,6 +13,11 @@
             max="40"
             [value]="item.value.quantity"
             class="category-stock-item">
+            
+            <span>{{item.value.categoryName}}</span>
+            <span>{{item.value.unitPrice}}</span>
+            <span>{{item.value.orderDate | date:'MM/dd/yyyy'}}</span>
+
             <button 
             type="button"
             (click)="onRemove(item, $index)"

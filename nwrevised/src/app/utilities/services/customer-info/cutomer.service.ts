@@ -18,7 +18,7 @@ export class CutomerService {
     var response = this._http.get<DistinctCustomer[]>(`${this.url}/Category/TopCustomers`)
       .pipe(
         tap(items => {
-          console.log(items, 'Categories')
+          //console.log(items, 'Categories')
         }),
         catchError(this.handleError),
       )
@@ -31,7 +31,7 @@ export class CutomerService {
     var response = this._http.get<CustomerProducts[]>(`${this.url}/Category/${id}`)
       .pipe(
         tap(items => {
-          console.log(items, 'Cutomer Products')
+         // console.log(items, 'Cutomer Products')
         }),
         catchError(this.handleError),
       )

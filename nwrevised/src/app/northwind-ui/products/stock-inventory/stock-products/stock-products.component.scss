@@ -5,8 +5,23 @@
 .stock-category-list {
     display: flex;
     justify-content: space-between;
-    width:69%;
+    width:100%;
     margin-bottom:20px;
+    padding:10px;
+    
+
+    & > * { 
+        flex:1 1 auto;
+    }
+
+    .product-name{
+        width:200px;
+        overflow-x: hidden;
+    }
+}
+
+.stock-category-list:nth-child(even){
+    background-color: #f3f6f7;
 }
 
 .category-stock-item{

@@ -1,10 +1,5 @@
 <div [formGroup]="parent()"><!--sets the formgroup to the form that was passed down from parent -->
-    <div formGroupName="store" class="branch-detail-fields">
-        <mat-form-field  class="custom-field">
-            <mat-label>Order Number</mat-label>
-            <input matInput placeholder="" formControlName="code" class="custom-input">
-          </mat-form-field>
-          
+    <div formGroupName="store" class="branch-detail-fields">          
           <mat-form-field appearance="fill" class="custom-field">
             <mat-label>Select Customer</mat-label>
             <mat-select formControlName="customer">

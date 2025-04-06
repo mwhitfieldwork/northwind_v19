@@ -5,7 +5,7 @@
             <span [formGroupName]="$index"> <!--$index is built into the @form-->
                  {{item.value.productID}} <!--Ties the formgroup to the index in the array-->
             </span>
-            <span>{{item.value.productName}}</span>
+            <span class="product-name">{{item.value.productName}}</span>
             <input 
             type="number" 
             step="10"

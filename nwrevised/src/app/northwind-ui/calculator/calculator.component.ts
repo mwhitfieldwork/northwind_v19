@@ -52,30 +52,30 @@ export class CalculatorComponent {
       const year = i + 1;
       const interestEarnedInYear = investmentValue * (data.expectedReturn / 100);
       investmentValue += interestEarnedInYear + data.annualInvestment;
+      
       const totalInterest =
         investmentValue - data.annualInvestment * year - data.initialInvestment;
+
       annualData.push({
         year: year,
-        interest: interestEarnedInYear,
-        valueEndOfYear: investmentValue,
-        annualInvestment: data.annualInvestment,
-        totalInterest: totalInterest,
+        interest: this.formatAmount(interestEarnedInYear),
+        valueEndOfYear: this.formatAmount(investmentValue) ,
+        annualInvestment: this.formatAmount(data.annualInvestment),
+        totalInterest: this.formatAmount(totalInterest),
         totalAmountInvested: data.initialInvestment + data.annualInvestment * year,
       });
     }
-    const formattedAnnualData = annualData.map(item => ({
-      ...item,
-      interestFormatted: this.currencyPipe.transform(item.interest, 'USD', 'symbol', '1.2-2'),
-      valueEndOfYearFormatted: this.currencyPipe.transform(item.valueEndOfYear, 'USD', 'symbol', '1.2-2'),
-      totalInterestFormatted: this.currencyPipe.transform(item.totalInterest, 'USD', 'symbol', '1.2-2'),
-      totalAmountInvestedFormatted: this.currencyPipe.transform(item.totalAmountInvested, 'USD', 'symbol', '1.2-2')
-    }));
 
-    this.dataSource.data = formattedAnnualData;
+    //console.log(annualData);
+
+
+    this.dataSource.data = annualData;
     this.isCalculated = true;
     return annualData;
   }
-
+  formatAmount(amount: number): string | null {
+    return this.currencyPipe.transform(amount, 'USD', 'symbol', '1.2-2');
+  }
 
   onSubmit(data: CalcModel){
     const calcData ={

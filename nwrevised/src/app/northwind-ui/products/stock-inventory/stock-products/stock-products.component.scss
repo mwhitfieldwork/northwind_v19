@@ -4,18 +4,21 @@
 
 .stock-category-list.header {
     font-weight: 700;
+
 } 
 
 .stock-category-list {
     display: flex;
-    justify-content: space-between;
     width:100%;
     margin-bottom:20px;
     padding:10px;
 
     .product-name{
-        width:200px;
         overflow-x: hidden;
+    }
+
+    span {
+        flex-grow: 1;
     }
 }
 

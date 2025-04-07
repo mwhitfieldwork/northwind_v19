@@ -1,5 +1,13 @@
 .dashboard-container {
     width: 100%;
+
+    h1 {
+      font-family: "Bitter", serif;
+      font-size: 3rem;
+      font-weight: 700;
+      font-style: normal;
+      color: #121020;
+    }
   }
   
   .dashboard-cards,
@@ -8,6 +16,7 @@
     mat-card {
       background-color: #fff;
       border-radius: 6px;
+      }
   
       h3 {
         margin: 0;
@@ -36,7 +45,6 @@
         align-items: center;
       }
     }
-  }
   
   .dashboard-cards {
     mat-card {

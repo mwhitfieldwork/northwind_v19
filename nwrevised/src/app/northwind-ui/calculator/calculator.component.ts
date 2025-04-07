@@ -1,5 +1,5 @@
-import { JsonPipe } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { CurrencyPipe, JsonPipe } from '@angular/common';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CalcModel } from '../../utilities/models/calc.model';
 import { BasicTableComponent } from "../../shared/basic-table/basic-table.component";
@@ -16,14 +16,18 @@ import { TooltipDirective } from '../../shared/tooltip/tooltip.directive';
     MatCardModule,
     BasicTableComponent,
     TooltipDirective],
+    providers: [CurrencyPipe],
   templateUrl: './calculator.component.html',
   styleUrl: './calculator.component.scss'
 })
 export class CalculatorComponent {
-  enteredInitialInvestment = signal('0'); //'0';
-  enteredAnnualInvestment = signal('0'); //'0';
-  enteredExpectedReturn = signal('5'); //'5';
-  enteredDuration = signal('10'); //'10';
+  //inject the pipe instead of imports, to use in the class instead of assignment in the template
+
+  enteredInitialInvestment = signal('0'); 
+  enteredAnnualInvestment = signal('0');
+  enteredExpectedReturn = signal('5'); 
+  enteredDuration = signal('10');
+
   investmentCalucationData:any[] = [];
   isCalculated = false;
   dataSource = new MatTableDataSource(this.investmentCalucationData); //come back to this datatype
@@ -37,12 +41,10 @@ export class CalculatorComponent {
     {columnDef:'totalAmountInvested', header:'Total Amount Invested'}
   ];
 
+  constructor(private currencyPipe: CurrencyPipe) {}
+
 
   calculateInvestmentResults(data:CalcModel) {
-    //const {initialInvestment, duration, annualInvestment, expectedReturn} = data; 
-    //pulls out properties of the ovbject and stores them in different constants without haveing
-    //to do eachone by one
-    //deconstruct the object
     const annualData = [];
     let investmentValue = data.initialInvestment;
   
@@ -61,8 +63,15 @@ export class CalculatorComponent {
         totalAmountInvested: data.initialInvestment + data.annualInvestment * year,
       });
     }
-    
-    this.dataSource.data = annualData;
+    const formattedAnnualData = annualData.map(item => ({
+      ...item,
+      interestFormatted: this.currencyPipe.transform(item.interest, 'USD', 'symbol', '1.2-2'),
+      valueEndOfYearFormatted: this.currencyPipe.transform(item.valueEndOfYear, 'USD', 'symbol', '1.2-2'),
+      totalInterestFormatted: this.currencyPipe.transform(item.totalInterest, 'USD', 'symbol', '1.2-2'),
+      totalAmountInvestedFormatted: this.currencyPipe.transform(item.totalAmountInvested, 'USD', 'symbol', '1.2-2')
+    }));
+
+    this.dataSource.data = formattedAnnualData;
     this.isCalculated = true;
     return annualData;
   }

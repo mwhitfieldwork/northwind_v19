@@ -1,5 +1,15 @@
 <div [formGroup]="parent()"><!--sets the formgroup to the form that was passed down from parent -->
-
+    @if(stocks().length > 0){
+        <div formArrayName="stock" class="stock-category-list header" >
+            <span>Product ID</span>
+            <span>Product Name</span>
+            <span>Quantity</span>
+            <span>Category</span>
+            <span>Unit Price</span>
+            <span>Order Date</span>
+            <span>&nbsp;</span>
+        </div>
+    }
      @for (item of stocks(); track item) {
         <div formArrayName="stock" class="stock-category-list" >
             <span [formGroupName]="$index"> <!--$index is built into the @form-->

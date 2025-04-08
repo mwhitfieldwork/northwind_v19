@@ -106,6 +106,11 @@ export class ProductTableComponent implements OnInit, AfterViewInit, OnDestroy {
     this.isOpenDialog = true;
   }
 
+  onSelectNewProductDetails(){
+    this.router.navigate(['/products', 'details', 'new']);
+    this.isOpenDialog = true;
+  }
+
 /*  openDialog(): void {
     const dialogRef = this.dialog.open(ProductTableDetailComponent, {
       data: this.products$

@@ -11,11 +11,20 @@ import { fromEvent,Observable, throwError } from 'rxjs';
 import { catchError, map, pluck } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 import { StockCategoryService } from '../../../../utilities/services/category-stock/category-stock.service';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-product-table-detail',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule],
+  imports: [
+    FormsModule, 
+    ReactiveFormsModule,
+    MatInputModule, 
+    MatFormFieldModule, 
+    MatSelectModule, 
+    CommonModule],
   templateUrl: './product-table-detail.component.html',
   styleUrl: './product-table-detail.component.scss'
 })

@@ -2,11 +2,28 @@
     display:flex;
 }
 
+.stock-category-list.header {
+    font-weight: 700;
+
+} 
+
 .stock-category-list {
     display: flex;
-    justify-content: space-between;
-    width:69%;
+    width:100%;
     margin-bottom:20px;
+    padding:10px;
+
+    .product-name{
+        overflow-x: hidden;
+    }
+
+    span {
+        flex-grow: 1;
+    }
+}
+
+.stock-category-list:nth-child(even){
+    background-color: #f3f6f7;
 }
 
 .category-stock-item{

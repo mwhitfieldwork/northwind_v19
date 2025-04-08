@@ -5,11 +5,12 @@ import { MatCardModule } from '@angular/material/card';
 import { LoginService } from '../../utilities/services/login/login.service';
 import { Router } from '@angular/router';
 import { UserSessionService } from '../../utilities/services/user-session/user-session.service';
+import { BasicButtonComponent } from '../../shared/basic-button/basic-button.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [AuthLoginComponent, MatCardModule],
+  imports: [AuthLoginComponent, MatCardModule, BasicButtonComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
   encapsulation: ViewEncapsulation.None

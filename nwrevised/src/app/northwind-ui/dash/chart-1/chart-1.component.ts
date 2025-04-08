@@ -4,11 +4,21 @@ import { StockCategoryService } from '../../../utilities/services/category-stock
 import { Subscription } from 'rxjs/internal/Subscription';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-chart-1',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, MatTooltipModule],
+  imports: [
+    ReactiveFormsModule, 
+    FormsModule, 
+    MatTooltipModule,
+    MatInputModule, 
+    MatFormFieldModule, 
+    MatSelectModule
+  ],
   templateUrl: './chart-1.component.html',
   styleUrl: './chart-1.component.scss'
 })

@@ -5,14 +5,19 @@
             <button 
             type="submit"
             class="btn btn-secondary" 
-            >Submit</button>
+            appButton>
+            Sign In
+            <span ngProjectAs="icon"> -></span>
+        </button>
         </app-auth-form>
         <app-auth-form (submitted)="verifyUser($event)" [signInErrorMessage]="signInErrorMessage">
+            <!-- ngProjectAs: can be aused anywhere  but limits use to inside the projected component-->
             <h3>Log In</h3>  
             <button 
             type="submit"
             class="btn btn-warning" 
-            >Submit</button>  
+            appButton>Log In
+            <span ngProjectAs="icon"> ></span></button>  
         </app-auth-form>
     </article>
 </mat-card>

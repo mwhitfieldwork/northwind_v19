@@ -14,7 +14,10 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
     CommonModule
   ],
   templateUrl: './basic-table.component.html',
-  styleUrl: './basic-table.component.scss'
+  styleUrl: './basic-table.component.scss',
+  host: {
+    class:"table-mat mat-elevation-z8" //adds these classes to the basic table wherever it is implemented
+  }
 })
 export class BasicTableComponent  implements OnChanges, AfterViewInit {
   

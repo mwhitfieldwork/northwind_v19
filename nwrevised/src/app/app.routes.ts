@@ -5,7 +5,7 @@ import { DashComponent } from './northwind-ui/dash/dash.component';
 import { ProductTableDetailComponent } from './northwind-ui/products/product-table/product-table-detail/product-table-detail.component';
 import { LoginComponent } from './northwind-ui/login/login.component';
 import { DashboardResolver } from './utilities/resolvers/dashboard-resolver.resolver';
-import { RefreshGuard } from './utilities/guards/login.guard';
+import { CalculateGuard } from './utilities/guards/calculate.guard';
 import { CalculatorComponent } from './northwind-ui/calculator/calculator.component';
 
 export const routes: Routes = [
@@ -14,7 +14,9 @@ export const routes: Routes = [
     component:DashComponent, 
     resolve: { data: DashboardResolver }
     },
-    {path:'calc', component:CalculatorComponent},
+    {path:'calc', component:CalculatorComponent, 
+        canActivate: [CalculateGuard],
+    },
     {path: 'stock', component: StockInventoryComponent},
     {path: 'products', component: ProductTableComponent,
         children: [

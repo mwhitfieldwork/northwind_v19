@@ -18,7 +18,9 @@
     }
 
     span {
-        flex-grow: 1;
+        /*flex-grow: 1;*/
+        width:15%;
+        overflow-x: hidden;
     }
 }
 

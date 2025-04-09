@@ -29,7 +29,8 @@ export class StockSelectorComponent implements OnInit {
         orderDate: value.orderDate,
         productID: value.productID,
         unitPrice: value.unitPrice,
-        quantity:value.quantity
+        quantity:value.quantity,
+        rating: value.rating
       });
     });
   }
@@ -45,7 +46,8 @@ export class StockSelectorComponent implements OnInit {
       orderDate: '',
       productID: 0,
       unitPrice: 0,
-      quantity: 10
+      quantity: 10,
+      rating:0
     });
     
     this.parent().get('selector')?.setValue({
@@ -55,7 +57,8 @@ export class StockSelectorComponent implements OnInit {
       orderDate: '',
       productID: 0,
       unitPrice: 0,
-      quantity: 12
+      quantity: 12,
+      rating:0
     });
 
     this.parent().get('selector')?.patchValue({
@@ -65,7 +68,8 @@ export class StockSelectorComponent implements OnInit {
       orderDate: '',
       productID: 0,
       unitPrice: 0,
-      quantity: 9
+      quantity: 9,
+      rating:0
     });
   }
 }

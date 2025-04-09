@@ -6,4 +6,5 @@ export interface CustomerProducts {
     unitPrice :number;
     orderDate:Date;
     quantity:number
+    rating:number;
 }

@@ -84,7 +84,8 @@ export class StockInventoryComponent implements OnInit, OnDestroy {
         orderDate: '',
         productID: 0,
         unitPrice: 0,
-        quantity: 90
+        quantity: 90,
+        rating:0
       }),
       stock: this.fb.array([
       ])
@@ -101,7 +102,8 @@ export class StockInventoryComponent implements OnInit, OnDestroy {
         orderDate: this.fb.control(stockItem.orderDate),
         productID: this.fb.control(stockItem.productID),
         unitPrice: this.fb.control(stockItem.unitPrice),
-        quantity: this.fb.control(stockItem.quantity)
+        quantity: this.fb.control(stockItem.quantity),
+        rating: this.getRating()
       });
   }
   addStock(value:any){
@@ -115,6 +117,10 @@ export class StockInventoryComponent implements OnInit, OnDestroy {
     control.removeAt(index);
     console.log(group, index) 
   }
+
+getRating():number {
+  return ((Math.random() * 100) + 1);
+}
 
   getCustomers(): void {
     this.customerList = this._customerService.getCustomers()

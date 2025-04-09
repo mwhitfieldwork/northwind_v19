@@ -7,7 +7,8 @@
             <span>Category</span>
             <span>Unit Price</span>
             <span>Order Date</span>
-            <span>&nbsp;</span>
+            <span>Rating</span>
+            <!--<span>&nbsp;</span> -->
         </div>
     }
      @for (item of stocks(); track item) {
@@ -28,11 +29,12 @@
             <span>{{item.value.categoryName}}</span>
             <span>{{item.value.unitPrice}}</span>
             <span>{{item.value.orderDate | date:'MM/dd/yyyy'}}</span>
+            <span rating [score]="item.value.rating"></span> 
 
-            <span><button 
+           <!--<span><button 
             type="button"
             (click)="onRemove(item, $index)"
-            class="btn btn-warning">Remove</button></span>
+            class="btn btn-warning">Remove</button></span> -->
         </div>
     }
 </div>

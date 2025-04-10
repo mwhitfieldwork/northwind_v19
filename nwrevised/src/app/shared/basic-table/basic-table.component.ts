@@ -16,7 +16,8 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
   templateUrl: './basic-table.component.html',
   styleUrl: './basic-table.component.scss',
   host: {
-    class:"table-mat mat-elevation-z8" //adds these classes to the basic table wherever it is implemented
+    class:"table-mat mat-elevation-z8", //adds these classes to the basic table wherever it is implemented
+    '(click)': 'onRowClick($event)'
   }
 })
 export class BasicTableComponent  implements OnChanges, AfterViewInit {
@@ -49,6 +50,8 @@ export class BasicTableComponent  implements OnChanges, AfterViewInit {
 
     console.log('DataSource data:2', this.dataSource)
   }
-
+  onRowClick($event:Event){
+    console.log($event, 'Row clicked');
+  }
 
 }

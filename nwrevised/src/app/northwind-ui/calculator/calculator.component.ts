@@ -1,6 +1,6 @@
 import { CurrencyPipe, JsonPipe } from '@angular/common';
-import { Component, inject, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { AfterViewInit, Component, ElementRef, inject, Signal, signal, viewChild, ViewChild } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
 import { CalcModel } from '../../utilities/models/calc.model';
 import { BasicTableComponent } from "../../shared/basic-table/basic-table.component";
 import { MatTableDataSource } from '@angular/material/table';
@@ -20,8 +20,14 @@ import { TooltipDirective } from '../../shared/tooltip/tooltip.directive';
   templateUrl: './calculator.component.html',
   styleUrl: './calculator.component.scss'
 })
-export class CalculatorComponent {
-  //inject the pipe instead of imports, to use in the class instead of assignment in the template
+export class CalculatorComponent implements AfterViewInit{
+    //inject the pipe instead of imports, to use in the class instead of assignment in the template
+
+  //accessing the form fromthe class. ElementRef wrap the request 
+  //element so that DOM acess can be given
+  @ViewChild('form') form?: ElementRef<NgForm>
+  
+  private signalForm = viewChild<ElementRef<NgForm>>('form') //gives a signal as a reference example
 
   enteredInitialInvestment = signal('0'); 
   enteredAnnualInvestment = signal('0');
@@ -43,8 +49,15 @@ export class CalculatorComponent {
 
   constructor(private currencyPipe: CurrencyPipe) {}
 
+  ngAfterViewInit(): void {
+    //gives access to the signal form for the reset method
+   // this.signalForm()?.nativeElement.reset(); 
+  }
 
   calculateInvestmentResults(data:CalcModel) {
+    //reset is only avaiable on the nativeLement  not on the form object itself
+    //this.form?.nativeElement.reset();
+
     const annualData = [];
     let investmentValue = data.initialInvestment;
   

@@ -19,6 +19,11 @@ export class DashComponent implements OnInit {
   averageTicketPrice:number = 708.12;
   backpackAverage:number = 1234.09;
   private  _userSessionService = inject(UserSessionService);
+  
+  //the type for this property can only be one of the three 
+  //specified union types
+  currentStatus!: 'online' | 'offline'| 'unknown' 
+  
   data: any;
   isLoading = true;
 

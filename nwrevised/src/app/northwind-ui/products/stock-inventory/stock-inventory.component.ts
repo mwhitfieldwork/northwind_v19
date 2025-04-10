@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, HostBinding, HostListener, inject, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormArray, ReactiveFormsModule, FormBuilder} from '@angular/forms';
 import { StockBranchComponent } from "./stock-branch/stock-branch.component";
 import {StockSelectorComponent} from "./stock-selector/stock-selector.component"
@@ -26,6 +26,15 @@ import { CustomerProducts } from '../../../utilities/models/customerProducts.mod
 
 //Creating a small feature that allows product to be ordered
 export class StockInventoryComponent implements OnInit, OnDestroy {
+  private el = inject(ElementRef);//if you need programmatic access to the host element
+
+  //depreciated way of adding a class of stokc-inventory to the host element
+  @HostBinding('class') className = 'stock-inventory'; 
+  // triggers when the host element is clicked
+  @HostListener('click')  onClick() {
+    console.log('Clicked');
+  } 
+
   private _customerService = inject(CutomerService);
 
   customerList!:Subscription;
@@ -158,6 +167,7 @@ getRating():number {
 
   onSubmit(){
     console.log('Submit', this.form.value)
+    console.log('Host Element', this.el);
   }
 
   /* --Longhand way

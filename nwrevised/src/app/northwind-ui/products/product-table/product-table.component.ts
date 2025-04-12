@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Inject, AfterViewInit, inject, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject, AfterViewInit, inject, OnDestroy, ContentChild, ElementRef, afterRender, afterNextRender } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { Product } from './models/products';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
@@ -37,6 +37,8 @@ export class ProductTableComponent implements OnInit, AfterViewInit, OnDestroy {
   paginator!: MatPaginator;
   
   @ViewChild(MatSort, {static: true}) sort!: MatSort;
+  @ContentChild('h1') title!: ElementRef<HTMLElement>;
+
   isLoading: boolean = false;
 
 
@@ -65,7 +67,16 @@ export class ProductTableComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private _productsService: ProductsService, 
     private router:Router,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog) { 
+
+      afterRender(() => { //triggers after anything changes, anywhere in the app
+        console.log(this.title.nativeElement.textContent);
+      });
+
+      afterNextRender(() => { //triggers next after anything changes in the app
+        console.log(this.title.nativeElement.textContent);
+      });
+    }
 
   ngOnInit(): void {
     this.isLoading = true;
@@ -79,6 +90,10 @@ export class ProductTableComponent implements OnInit, AfterViewInit, OnDestroy {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
+  }
+
+  ngAfterContentInit(): void { //guarantees to have access to the content child
+    //this.title.nativeElement.textContent = 'Products'; 
   }
 
   ngOnDestroy(): void {

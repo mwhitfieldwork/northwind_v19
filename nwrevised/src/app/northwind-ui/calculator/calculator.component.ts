@@ -49,7 +49,7 @@ export class CalculatorComponent implements AfterViewInit{
 
   constructor(private currencyPipe: CurrencyPipe) {}
 
-  ngAfterViewInit(): void {
+  ngAfterViewInit(): void { //guarntees access to the viewChild 
     //gives access to the signal form for the reset method
    // this.signalForm()?.nativeElement.reset(); 
   }

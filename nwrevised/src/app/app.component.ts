@@ -6,6 +6,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { filter } from 'rxjs';
+import { DisplayLinkDirective } from './utilities/directives/auth/display-link.directive';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -16,7 +17,8 @@ import { filter } from 'rxjs';
     MatListModule,
     MatToolbarModule, 
     MatIconModule,
-    RouterLink ],
+    RouterLink,
+    DisplayLinkDirective],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

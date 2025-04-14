@@ -10,6 +10,7 @@ import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router
 import { filter, map, take } from 'rxjs/operators';
 import { ProductsService } from '../../../utilities/services/product-table/products.service';
 import { ProductTableDetailComponent } from "./product-table-detail/product-table-detail.component";
+import { ConfirmDeleteDirective } from '../../../utilities/directives/safe-link/confirmDelete.directive';
 
 
 @Component({
@@ -28,7 +29,8 @@ import { ProductTableDetailComponent } from "./product-table-detail/product-tabl
     ReactiveFormsModule,
     RouterOutlet,
     RouterLink,
-    ProductTableDetailComponent
+    ProductTableDetailComponent,
+    ConfirmDeleteDirective
 ]
 })
 export class ProductTableComponent implements OnInit, AfterViewInit, OnDestroy {
@@ -68,7 +70,7 @@ export class ProductTableComponent implements OnInit, AfterViewInit, OnDestroy {
     private _productsService: ProductsService, 
     private router:Router,
     private dialog: MatDialog) { 
-
+      /*
       afterRender(() => { //triggers after anything changes, anywhere in the app
         console.log(this.title.nativeElement.textContent);
       });
@@ -76,6 +78,7 @@ export class ProductTableComponent implements OnInit, AfterViewInit, OnDestroy {
       afterNextRender(() => { //triggers next after anything changes in the app
         console.log(this.title.nativeElement.textContent);
       });
+      */
     }
 
   ngOnInit(): void {
@@ -170,8 +173,8 @@ export class ProductTableComponent implements OnInit, AfterViewInit, OnDestroy {
   addRating(products:Product[]):void {
   }
 
-  deleteProduct(id:number){
-    console.log(id);
+  deleteProduct($event:any){
+    console.log($event, 'TESTTTTTT');
   }
 }
 

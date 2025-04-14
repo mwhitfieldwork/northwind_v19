@@ -7,6 +7,7 @@ import { LoginComponent } from './northwind-ui/login/login.component';
 import { DashboardResolver } from './utilities/resolvers/dashboard-resolver.resolver';
 import { CalculateGuard } from './utilities/guards/calculate.guard';
 import { CalculatorComponent } from './northwind-ui/calculator/calculator.component';
+import { EmployeesComponent } from './northwind-ui/employees/employees.component';
 
 export const routes: Routes = [
     {path: '', component:LoginComponent},
@@ -17,6 +18,7 @@ export const routes: Routes = [
     {path:'calc', component:CalculatorComponent, 
         canActivate: [CalculateGuard],
     },
+    {path:'work', component:EmployeesComponent},
     {path: 'stock', component: StockInventoryComponent},
     {path: 'products', component: ProductTableComponent,
         children: [

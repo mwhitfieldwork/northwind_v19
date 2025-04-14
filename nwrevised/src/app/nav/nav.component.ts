@@ -2,11 +2,15 @@ import { AfterViewInit, Component, computed, inject } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
 import { UserSessionService } from '../utilities/services/user-session/user-session.service';
 import { Authentication } from '../utilities/models/authentication';
+import { SafelinkDirective } from '../utilities/directives/safe-link/safelink.directive';
 
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [RouterLink],
+  imports: [
+    RouterLink, 
+    SafelinkDirective
+  ],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.scss'
 })

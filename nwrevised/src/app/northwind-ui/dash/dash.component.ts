@@ -6,10 +6,17 @@ import { Chart1Component } from "./chart-1/chart-1.component";
 import { OrderHistoryComponent } from "../order-history/order-history.component";
 import { UserSessionService } from '../../utilities/services/user-session/user-session.service';
 import { ActivatedRoute } from '@angular/router';
+import { TooltipDirective } from '../../utilities/directives/tooltip/tooltip.directive';
 @Component({
   selector: 'app-dash',
   standalone: true,
-  imports: [EmployeesComponent, MatCardModule, StockInventoryComponent, Chart1Component, OrderHistoryComponent],
+  imports: [
+    EmployeesComponent, 
+    MatCardModule, 
+    StockInventoryComponent, 
+    Chart1Component, 
+    OrderHistoryComponent,
+    TooltipDirective],
   templateUrl: './dash.component.html',
   styleUrl: './dash.component.scss'
 })

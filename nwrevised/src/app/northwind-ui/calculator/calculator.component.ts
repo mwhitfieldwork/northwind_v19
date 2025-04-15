@@ -5,7 +5,8 @@ import { CalcModel } from '../../utilities/models/calc.model';
 import { BasicTableComponent } from "../../shared/basic-table/basic-table.component";
 import { MatTableDataSource } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
-import { TooltipDirective } from '../../shared/tooltip/tooltip.directive';
+import { LogDirective } from '../../utilities/directives/log/log.directive';
+import { TooltipDirective } from '../../utilities/directives/tooltip/tooltip.directive';
 
 @Component({
   selector: 'app-calculator',
@@ -18,7 +19,9 @@ import { TooltipDirective } from '../../shared/tooltip/tooltip.directive';
     TooltipDirective],
     providers: [CurrencyPipe],
   templateUrl: './calculator.component.html',
-  styleUrl: './calculator.component.scss'
+  styleUrl: './calculator.component.scss',
+  hostDirectives:[LogDirective] //Adds a directive to the top level of the app-calculator tag 
+                                // THis can still be used on the element tags of the template as well
 })
 export class CalculatorComponent implements AfterViewInit{
     //inject the pipe instead of imports, to use in the class instead of assignment in the template

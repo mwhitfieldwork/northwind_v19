@@ -13,7 +13,7 @@ export class ChangeLinkDirective {
   private hostElementRef = inject<ElementRef<HTMLAnchorElement>>(ElementRef); //you can inject the element itself
 
   onClick($event:MouseEvent):void {
-    const isReadytoContinue= window.confirm('Are you sure?');
+    const isReadytoContinue= window.confirm('Are you sure you want to leave?');
 
     if(isReadytoContinue) {
       const address = this.hostElementRef.nativeElement.href;

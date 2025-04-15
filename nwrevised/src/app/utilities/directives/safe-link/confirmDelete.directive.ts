@@ -12,7 +12,7 @@ export class ConfirmDeleteDirective {
 
 
   onClick($event:MouseEvent):void {
-    const isReadytoContinue= window.confirm('Are you sure?');
+    const isReadytoContinue= window.confirm('Are you sure you want to delete?');
 
     if(isReadytoContinue) {
       this.safelinkConfirmed.emit();

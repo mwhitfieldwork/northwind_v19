@@ -8,6 +8,8 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatCheckboxChange, MatCheckboxModule } from '@angular/material/checkbox';
 import { SelectionModel } from '@angular/cdk/collections';
 import { FormsModule } from '@angular/forms';
+import { CustomNumberPipe } from '../../utilities/pipes/custom-number/custom-number.pipe';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-order-history',
@@ -17,7 +19,9 @@ import { FormsModule } from '@angular/forms';
     MatPaginatorModule,
     MatSortModule,
     MatCheckboxModule,
-    FormsModule
+    FormsModule,
+    CustomNumberPipe,
+    DecimalPipe
   ],
   templateUrl: './order-history.component.html',
   styleUrl: './order-history.component.scss'

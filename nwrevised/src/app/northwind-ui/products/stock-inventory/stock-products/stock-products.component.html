@@ -11,7 +11,8 @@
             <!--<span>&nbsp;</span> -->
         </div>
     }
-     @for (item of stocks(); track item) {
+    <!-- you can use pipes in for loops as well -->
+     @for (item of stocks(); track item; let i = $index) {
         <div formArrayName="stock" class="stock-category-list" >
             <span [formGroupName]="$index"> <!--$index is built into the @form-->
                  {{item.value.productID}} <!--Ties the formgroup to the index in the array-->

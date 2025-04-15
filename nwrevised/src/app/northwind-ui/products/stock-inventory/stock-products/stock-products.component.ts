@@ -6,7 +6,10 @@ import { RatingComponent } from '../../../../shared/rating/rating.component';
 @Component({
   selector: 'stock-products',
   standalone: true,
-  imports: [ReactiveFormsModule, DatePipe, RatingComponent],
+  imports: [
+    ReactiveFormsModule, 
+    DatePipe, 
+    RatingComponent],
   templateUrl: './stock-products.component.html',
   styleUrl: './stock-products.component.scss'
 })

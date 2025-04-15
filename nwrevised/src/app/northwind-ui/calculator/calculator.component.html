@@ -39,6 +39,6 @@
 
 @if(isCalculated){
     <mat-card>
-        <app-basic-table [dataSource]="dataSource" [displayedColumns]="displayedColumns"></app-basic-table>
+        <app-basic-table [dataSource]="dataSource" [displayedColumns]="displayedColumns" appTooltip="Utilizes a generic mat table, the currency is passed in since the currency pipe couldnt be applied in the markup"></app-basic-table>
     </mat-card>
 }

@@ -13,11 +13,6 @@ const httpOptions = {
   })
 };
 
-interface ProductResponse {
-  success: boolean;
-  data: Product[];
-}
-
 @Injectable({
   providedIn: 'root'
 })
@@ -25,14 +20,12 @@ export class ProductsService {
 private _http = inject(HttpClient);
 
   url:string = 'https://localhost:7216';
-  njsUrl:string = 'http://localhost:3000';
   errorMessage:any;
 
   getProducts(): Observable<Product[]> {
-    //var response = this._http.get<Product[]>(`${this.url}/Product`)
-    var response = this._http.get<ProductResponse>(`${this.njsUrl}/api/v1/products`)
+    var response = this._http.get<Product[]>(`${this.url}/Product`)
       .pipe(
-        map(products => products.data.slice(0, 10)), 
+        map(products => products.slice(0, 10)), 
         tap(items => {
           //console.log(this.url)
         }),

@@ -3,14 +3,23 @@
     height:300px;
 }
 
-.bar-chart{
-    background-color:#fff;
+.chart-wrap,
+.chart-wrap * {
+    overflow: visible !important;
+    border-radius: 0 !important;
+    width:400px;
+}
+
+canvas {
+    background: none !important;
 }
 
 .grid {
-    stroke: black;
-    stroke-dasharray: 5.5;
-    opacity: 0.2;
+    stroke: none !important;
+}
+
+.bar-chart{
+    background-color:#fff;
 }
 
 select {

@@ -8,6 +8,7 @@ import { DashboardResolver } from './utilities/resolvers/dashboard-resolver.reso
 import { CalculateGuard } from './utilities/guards/calculate.guard';
 import { CalculatorComponent } from './northwind-ui/calculator/calculator.component';
 import { EmployeesComponent } from './northwind-ui/employees/employees.component';
+import{ TodoComponent } from './northwind-ui/todo/todo.component'
 
 export const routes: Routes = [
     {path: '', component:LoginComponent},
@@ -20,6 +21,7 @@ export const routes: Routes = [
     },
     {path:'work', component:EmployeesComponent},
     {path: 'stock', component: StockInventoryComponent},
+    {path: 'todo', component: TodoComponent},
     {path: 'products', component: ProductTableComponent,
         children: [
             {path: 'details/new', component: ProductTableDetailComponent},

@@ -1,8 +1,10 @@
 /* implement of this application was from udemy course */
 
-
-::ng-deep .mat-sidenav-content {
-  background-color: #000e03; /* Change to your desired color */
+:host {
+  display: block;
+  background-color: #000e03; 
+  height: 100%;
+  width: 100%;
 }
 
 form {

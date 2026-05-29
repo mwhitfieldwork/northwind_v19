@@ -26,6 +26,8 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              "src/nw-icon.ico",
+              "src/assets",
               {
                 "glob": "**/*",
                 "input": "public"

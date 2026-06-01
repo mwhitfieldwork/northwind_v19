@@ -1,6 +1,9 @@
 @if(user){
 <section id="navigation" >
     <nav class=""navbar navbar-dark bg-dark>
+        <div class="user-icon">
+            <app-users [user]="getVisitor()" />
+        </div>
         <ul>
             <!-- if you are seeting the value of an attribute with a string, you dont need square brackets-->
             <li><a href="https://mwhitfieldwork.github.io/portfolio/#home" 

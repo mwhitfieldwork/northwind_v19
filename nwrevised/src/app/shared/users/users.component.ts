@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {Visitor} from '../../utilities/models/visitor.model';
 
 @Component({
   selector: 'app-users',
@@ -8,5 +9,15 @@ import { Component } from '@angular/core';
   styleUrl: './users.component.scss'
 })
 export class UsersComponent {
+@Input() user!: Visitor;
+@Output() select = new EventEmitter<string>();
+
+get imagePath() {
+  return `assets/users/${this.user.avatar}`;
+}
+
+onSelectUser(selectedUser:string) {
+  this.select.emit(this.user.id);
+}
 
 }

@@ -2,4 +2,22 @@
     <img src="../../../assets/task-management-logo.png" alt="logo">
     <div>Task Management</div>
     <p>Enterprise-level task management without friction</p>
-<app-users></app-users>
+</header>
+
+<main>
+    <ul id="users">
+        @for(user of users; track user.id){
+            <li>
+                <app-users [user]="user" 
+                (select)="onSelectUser($event)"
+                ></app-users>
+            </li>
+        }
+    </ul>
+    @if(selectedUser){
+        <app-tasks [name]="selectedUser.name"></app-tasks>
+    } 
+    @else {
+       <p>No user selected</p> 
+    }
+</main>

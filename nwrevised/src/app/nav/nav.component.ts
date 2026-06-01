@@ -3,14 +3,18 @@ import { RouterLink, Router } from '@angular/router';
 import { UserSessionService } from '../utilities/services/user-session/user-session.service';
 import { Authentication } from '../utilities/models/authentication';
 import { SafelinkDirective } from '../utilities/directives/safe-link/safelink.directive';
+import { UsersComponent } from "../shared/users/users.component";
+import { DUMMY_USERS } from '../utilities/models/DUMMY_USERS';
+import { Visitor } from '../utilities/models/visitor.model';
 
 @Component({
   selector: 'app-nav',
   standalone: true,
   imports: [
-    RouterLink, 
-    SafelinkDirective
-  ],
+    RouterLink,
+    SafelinkDirective,
+    UsersComponent
+],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.scss'
 })
@@ -20,6 +24,7 @@ export class NavComponent implements AfterViewInit {
  userId!:string;
  user!:Authentication | null;
  isLoggedIn:boolean = false
+ visitors = DUMMY_USERS;
 
 ngAfterViewInit(): void {
   const userId = localStorage.getItem('user');
@@ -29,12 +34,19 @@ ngAfterViewInit(): void {
   this.getUser()
 }
 
+getVisitor():Visitor | undefined{
+  if(this.userId){
+    return  this.visitors.find(visitor => visitor.visitorId === Number(this.userId));
+  }
+  return undefined;
+}
 
 getUser(){
   if(this.userId) {
     this._userSessionService.getUser(this.userId).subscribe((response) => {
-      this.user = response
-      //console.log(response, "Response");
+      this.user = response;
+      this.getVisitor();
+      console.log(this.getVisitor());
     });
   }
 

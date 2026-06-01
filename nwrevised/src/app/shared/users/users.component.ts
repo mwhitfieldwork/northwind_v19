@@ -9,15 +9,15 @@ import {Visitor} from '../../utilities/models/visitor.model';
   styleUrl: './users.component.scss'
 })
 export class UsersComponent {
-@Input() user!: Visitor;
+@Input() user: Visitor | undefined;
 @Output() select = new EventEmitter<string>();
 
 get imagePath() {
-  return `assets/users/${this.user.avatar}`;
+  return `assets/users/${this.user?.avatar}`;
 }
 
 onSelectUser(selectedUser:string) {
-  this.select.emit(this.user.id);
+  this.select.emit(this.user?.id);
 }
 
 }

@@ -7,6 +7,7 @@ import { OrderHistoryComponent } from "../order-history/order-history.component"
 import { UserSessionService } from '../../utilities/services/user-session/user-session.service';
 import { ActivatedRoute } from '@angular/router';
 import { TooltipDirective } from '../../utilities/directives/tooltip/tooltip.directive';
+import { CardBasicComponent } from '../../shared/card-basic/card-basic.component';
 @Component({
   selector: 'app-dash',
   standalone: true,
@@ -16,7 +17,9 @@ import { TooltipDirective } from '../../utilities/directives/tooltip/tooltip.dir
     StockInventoryComponent, 
     Chart1Component, 
     OrderHistoryComponent,
-    TooltipDirective],
+    TooltipDirective,
+    CardBasicComponent
+  ],
   templateUrl: './dash.component.html',
   styleUrl: './dash.component.scss'
 })

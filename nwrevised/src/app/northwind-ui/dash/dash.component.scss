@@ -54,7 +54,16 @@
   }
   
   .detail-information {
+    display: flex;
+    flex-wrap: wrap;
+
+    .col{
+      display: flex;
+    }
+
     mat-card {
+      flex:1;
+      display: flex;
       flex-direction: column;
   
       .orders {

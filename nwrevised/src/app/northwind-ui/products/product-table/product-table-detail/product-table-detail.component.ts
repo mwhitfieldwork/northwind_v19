@@ -120,6 +120,7 @@ export class ProductTableDetailComponent implements OnInit{
 
   callExistingProduct(){
     const prodId = this.route.snapshot.paramMap.get('id') ?? '';
+    //const prodId = '999' //force 500;
 
     this._productsService.getProduct(prodId).subscribe(product => { 
       this.ratedProduct = product;

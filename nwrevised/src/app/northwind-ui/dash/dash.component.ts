@@ -8,6 +8,7 @@ import { UserSessionService } from '../../utilities/services/user-session/user-s
 import { ActivatedRoute } from '@angular/router';
 import { TooltipDirective } from '../../utilities/directives/tooltip/tooltip.directive';
 import { CardBasicComponent } from '../../shared/card-basic/card-basic.component';
+import { CurrencyPipe } from '@angular/common';
 @Component({
   selector: 'app-dash',
   standalone: true,
@@ -18,7 +19,8 @@ import { CardBasicComponent } from '../../shared/card-basic/card-basic.component
     Chart1Component, 
     OrderHistoryComponent,
     TooltipDirective,
-    CardBasicComponent
+    CardBasicComponent,
+    CurrencyPipe
   ],
   templateUrl: './dash.component.html',
   styleUrl: './dash.component.scss'
@@ -28,6 +30,7 @@ export class DashComponent implements OnInit {
   averageOrderPrice:number = 5433.32;
   averageTicketPrice:number = 708.12;
   backpackAverage:number = 1234.09;
+  averageSaleCost:number = 12345.09;
   private  _userSessionService = inject(UserSessionService);
   
   //the type for this property can only be one of the three 

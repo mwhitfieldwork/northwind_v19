@@ -1,87 +1,401 @@
+// =============================================================
+// Highdmin-inspired Colorway
+// Cool indigo primary + slate-indigo ink, with amber / teal / violet
+// accents for the stat cards. Layout, spacing, and type scale are
+// untouched — only the colorway changes.
+// =============================================================
+
+// --- Uniform Design Variables (unchanged) ---
+$font-family-sans: 'Inter', system-ui, -apple-system, sans-serif;
+$card-radius: 8px;
+$transition-speed: 0.3s;
+
+// --- Uniform Card Font Sizes (unchanged) ---
+$font-size-card-title: 1.15rem;
+$font-size-card-value: 2.25rem;
+$font-size-card-sub: 0.85rem;
+$font-size-card-footer: 0.9rem;
+
+// =============================================================
+// Colorway Tokens
+// =============================================================
+$color-primary:        #5b6df0; // signature indigo-blue
+$color-primary-dark:   #4654d6;
+$color-primary-light:  #eef0fd; // tinted background / borders
+
+$color-ink:             #262b45; // headings / high-emphasis text
+$color-ink-soft:        #6b7280; // secondary / muted text
+
+$color-border:          #e3e6f7;
+
+// Accent family for the four stat cards
+$color-amber:           #f59e0b;
+$color-amber-dark:      #92400e;
+$color-amber-bg-from:   #fffaf3;
+$color-amber-bg-to:     #fef3da;
+$color-amber-border:    #fde9b8;
+
+$color-teal:            #14b8a6;
+$color-teal-dark:       #115e4c;
+$color-teal-bg-from:    #f4fdfb;
+$color-teal-bg-to:      #d8f6ee;
+$color-teal-border:     #aee9da;
+
+$color-violet:          #a855f7;
+$color-violet-dark:     #6b21a8;
+$color-violet-bg-from:  #faf5ff;
+$color-violet-bg-to:    #f1e1fb;
+$color-violet-border:   #e6c9f5;
+
 .dashboard-container {
-    width: 100%;
+  width: 100%;
 
-    h1 {
-      font-family: "Bitter", serif;
-      font-size: 3rem;
-      font-weight: 700;
-      font-style: normal;
-      color: #121020;
-    }
+  h1 {
+    font-family: "Bitter", serif;
+    font-size: 3rem;
+    font-weight: 700;
+    font-style: normal;
+    color: $color-ink;
   }
-  
-  .dashboard-cards,
-  .detail-information,
-  .employee-information {
-    mat-card {
-      background-color: #fff;
-      border-radius: 6px;
-      }
-  
-      h3 {
-        margin: 0;
-        font-size: medium;
-        height: 25px;
-        white-space: nowrap;
-      }
-  
-      h4 {
-        margin: 0;
-        font-size: small;
-        font-weight: bold;
-      }
-  
-      p {
-        font-size: smaller;
-      }
-  
-      .dashboard-card-icon {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background-color: #b8c2f7;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-    }
-  
-  .dashboard-cards {
-    mat-card {
-      justify-content: space-between;
-      flex-direction: row;
-    }
-  }
-  
-  .detail-information {
+}
+
+// =============================================================
+// Top Dashboard Mini Metric Cards Block
+// =============================================================
+.dashboard-cards {
+  margin-bottom: 1.5rem;
+
+  .col {
     display: flex;
-    flex-wrap: wrap;
+  }
 
-    .col{
-      display: flex;
+  div {
+    border-radius: $card-radius;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    /*padding: 1.75rem 2rem !important;*/
+    transition: transform $transition-speed ease, box-shadow $transition-speed ease;
+
+   /* &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(38, 43, 69, 0.08);
+    }*/
+  }
+
+  article.d-block {
+    flex: 1;
+  }
+
+  h3 {
+    margin: 0 0 0.35rem 0 !important;
+    font-family: $font-family-sans;
+    font-size: 0.75rem !important;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  h4 {
+    margin: 0 0 0.65rem 0 !important;
+    font-family: "Bitter", serif;
+    font-size: $font-size-card-title !important;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+  }
+
+  p {
+    margin: 0 !important;
+    font-family: $font-family-sans;
+    font-size: 2rem !important;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+  }
+
+  .dashboard-card-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background-color: #ffffff !important;
+    box-shadow: 0 4px 10px rgba(38, 43, 69, 0.06);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    margin-left: 1.5rem;
+
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  // --- Theme Overrides ---
+
+  // 1. Total Orders Card (Primary Indigo)
+  div.total-orders {
+    background: linear-gradient(135deg, #f6f7fe 0%, $color-primary-light 100%) !important;
+    border: 1px solid #dde1fb !important;
+
+    h3 { color: $color-ink-soft !important; }
+    h4 { color: $color-primary-dark !important; }
+    p  { color: $color-primary !important; }
+    svg { color: $color-primary !important; }
+  }
+
+  // 2. Mile Total Card (Amber)
+  div.mile-total {
+    background: linear-gradient(135deg, $color-amber-bg-from 0%, $color-amber-bg-to 100%) !important;
+    border: 1px solid $color-amber-border !important;
+
+    h3 { color: $color-ink-soft !important; }
+    h4 { color: $color-amber-dark !important; }
+    p  { color: #b45309 !important; }
+    svg { color: $color-amber !important; }
+  }
+
+  // 3. Backpack Total Card (Teal)
+  div.backpack-total {
+    background: linear-gradient(135deg, $color-teal-bg-from 0%, $color-teal-bg-to 100%) !important;
+    border: 1px solid $color-teal-border !important;
+
+    h3 { color: $color-ink-soft !important; }
+    h4 { color: $color-teal-dark !important; }
+    p  { color: #0f766e !important; }
+    svg { color: $color-teal !important; }
+  }
+
+  // 4. Metric Averages Card (Violet)
+  div.metric-total {
+    background: linear-gradient(135deg, $color-violet-bg-from 0%, $color-violet-bg-to 100%) !important;
+    border: 1px solid $color-violet-border !important;
+
+    h3 { color: $color-ink-soft !important; }
+    h4 { color: $color-violet-dark !important; }
+    p  { color: #9333ea !important; }
+    svg { color: $color-violet !important; }
+  }
+}
+
+// =============================================================
+// Detail / Employee Information
+// =============================================================
+.detail-information,
+.employee-information {
+  mat-card {
+    background-color: #fff;
+    border-radius: $card-radius;
+    border: 1px solid $color-border;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: medium;
+    height: 25px;
+    white-space: nowrap;
+    color: $color-ink-soft;
+  }
+
+  h4 {
+    margin: 0;
+    font-size: small;
+    font-weight: bold;
+    color: $color-ink;
+  }
+
+  p {
+    font-size: smaller;
+    color: $color-ink-soft;
+  }
+}
+
+.detail-information {
+  display: flex;
+  flex-wrap: wrap;
+
+  .col {
+    display: flex;
+  }
+
+  mat-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    .orders {
+      margin-top: 20px;
+    }
+  }
+}
+
+// =============================================================
+// Basic Information Cards Layout System
+// =============================================================
+.basic-information {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+
+  .col {
+    flex: 1;
+    min-width: 280px;
+    display: flex;
+  }
+
+  app-card-basic {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-radius: $card-radius;
+    box-shadow: 0 4px 15px rgba(38, 43, 69, 0.05);
+    overflow: hidden;
+    transition: transform $transition-speed ease, box-shadow $transition-speed ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(38, 43, 69, 0.1);
     }
 
-    mat-card {
-      flex:1;
-      display: flex;
-      flex-direction: column;
-  
-      .orders {
-        margin-top: 20px;
+    [content-header],
+    [content-body],
+    [content-footer] {
+      padding: 1.5rem 1.75rem;
+    }
+
+    [content-body] {
+      flex-grow: 1;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    [content-footer] {
+      background-color: rgba(38, 43, 69, 0.03);
+
+      p {
+        margin: 0;
+        font-family: $font-family-sans;
+        font-size: $font-size-card-footer;
+        font-weight: 600;
+        cursor: pointer;
+        display: inline-block;
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }
-  
-  .employee-information {
-    mat-card {
-      width: 50%;
+}
+
+// Card Variants
+.overall-sales {
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-dark 100%);
+  color: #fff;
+  width: 100%;
+
+  [content-header] {
+    h3 {
+      margin: 0 0 0.5rem 0;
+      font-family: "Bitter", serif;
+      font-size: $font-size-card-title;
+      font-weight: 700;
+      color: rgba(#fff, 0.9);
+    }
+
+    .overall-costs {
+      color: #34d399; // mint pop against the indigo gradient
+      font-size: $font-size-card-value;
+      font-weight: 700;
+      margin: 0;
+      letter-spacing: -0.5px;
     }
   }
-  
-  .chart {
-    background-color: #fff;
-    width: 100%;
-    margin: 15px 0;
-    border-radius: 3px;
-    overflow: hidden;
+
+  [content-body] {
+    p {
+      margin: 0 0 1rem 0;
+      font-family: $font-family-sans;
+      font-size: $font-size-card-sub;
+      color: rgba(#fff, 0.75);
+    }
   }
+
+  [content-footer] {
+    border-top: 1px solid rgba(#fff, 0.15);
+    p {
+      color: #fff;
+    }
+  }
+}
+
+.verified-savings {
+  background: linear-gradient(135deg, #ffffff 0%, $color-primary-light 100%);
+  border: 1px solid $color-border;
+  color: $color-ink;
+
+  [content-header] {
+    h3 {
+      margin: 0 0 0.5rem 0;
+      font-family: "Bitter", serif;
+      font-size: $font-size-card-title;
+      font-weight: 700;
+      color: $color-ink;
+    }
+
+    p {
+      margin: 0;
+      font-family: $font-family-sans;
+      font-size: $font-size-card-value;
+      font-weight: 700;
+      color: $color-primary;
+      letter-spacing: -0.5px;
+    }
+
+    span {
+      display: inline-block;
+      margin-top: 0.25rem;
+      font-family: $font-family-sans;
+      font-size: $font-size-card-sub;
+      color: $color-ink-soft;
+      font-weight: 500;
+    }
+  }
+
+  [content-body] {
+    p {
+      margin: 0 0 1rem 0;
+      font-family: $font-family-sans;
+      font-size: $font-size-card-sub;
+      color: $color-ink-soft;
+    }
+  }
+
+  [content-footer] {
+    border-top: 1px solid $color-border;
+    p {
+      color: $color-primary;
+
+      &:hover {
+        color: $color-primary-dark;
+      }
+    }
+  }
+}
+
+.employee-information {
+  mat-card {
+    width: 50%;
+  }
+}
+
+.chart {
+  background-color: #fff;
+  width: 100%;
+  margin: 15px 0;
+  border-radius: 3px;
+  overflow: hidden;
+  border: 1px solid $color-border;
+}

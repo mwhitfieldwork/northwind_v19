@@ -49,6 +49,7 @@ private _http = inject(HttpClient);
   }
 
   getProduct(productId: string): Observable<Product> {
+    //let url = `${this.url}/Productw/${productId}`; fake 404 error
     let url = `${this.url}/Product/${productId}`;
     var response = this._http.get<Product>(url)
       .pipe(

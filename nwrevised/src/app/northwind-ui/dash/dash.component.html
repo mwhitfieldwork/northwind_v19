@@ -104,25 +104,62 @@
                 <p class="overall-costs">{{averageSaleCost | currency:'USD':'symbol':'1.0-0' }}</p>
             </div>
             <div content-body>
-                <p>{{averageSaleCost}}</p>
+                <p>Cumulative costs since last March: {{averageSaleCost | currency:'USD':'symbol':'1.0-0' }}</p>
+                <h4>THIS MONTH <span>{{basicCost | currency:'USD':'symbol':'1.0-0' }}</span></h4>
             </div>
             <div content-footer>
-                <p>View More</p>
+                <article>
+                    <h4>Water</h4>
+                    <p>185.2k Gal</p>
+                    <span>{{averageSaleCost | currency:'USD':'symbol':'1.0-0' }}</span>
+                </article>
+                <article>
+                    <h4>Coal</h4>
+                    <p>41.2k Mb</p>
+                    <span>{{averageSaleCost | currency:'USD':'symbol':'1.0-0' }}</span>
+                </article>
+                <article>
+                    <h4>Coal</h4>
+                    <p>41.2k Mb</p>
+                    <span>{{averageSaleCost | currency:'USD':'symbol':'1.0-0' }}</span>
+                </article>                
             </div>
         </app-card-basic>
         </div>
         <div class="col">
             <app-card-basic class="verified-savings">
                 <div content-header>
-                    <h3>OPIQ Verified Savings</h3>
-                    <p>{{averageTicketPrice}}</p>
-                    <span>Cumulative Savings</span>
+                    <h3>Occupied Spaciacl Costs</h3>
+                    <p class="overall-costs">{{averageSaleCost | currency:'USD':'symbol':'1.0-0' }}</p>
                 </div>
                 <div content-body>
-                    <p>{{averageTicketPrice}}</p>
+                    <p><strong>Estimated Influenced Sales drivers</strong></p>
+                    <h4>Top Sales Influences</h4>
+
+                    @for(driver of drivers; track driver.id){
+                        <article >
+                            <span class="driver-id">{{driver.id}}</span>
+                            <p><strong>{{driver.name}}</strong></p>
+                            <span class="driver-cost"><strong>{{driver.cost | currency:'USD':'symbol':'1.0-0' }}</strong></span>
+                        </article>        
+                    }
                 </div>
                 <div content-footer>
-                    <p>View More</p>
+                    <article>
+                        <h4>Water</h4>
+                        <p>185.2k Gal</p>
+                        <span>{{averageSaleCost | currency:'USD':'symbol':'1.0-0' }}</span>
+                    </article>
+                    <article>
+                        <h4>Coal</h4>
+                        <p>41.2k Mb</p>
+                        <span>{{averageSaleCost | currency:'USD':'symbol':'1.0-0' }}</span>
+                    </article>
+                    <article>
+                        <h4>Coal</h4>
+                        <p>41.2k Mb</p>
+                        <span>{{averageSaleCost | currency:'USD':'symbol':'1.0-0' }}</span>
+                    </article>        
                 </div>
             </app-card-basic>
             </div>        

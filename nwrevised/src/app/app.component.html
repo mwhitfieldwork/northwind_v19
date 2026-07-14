@@ -1,25 +1,67 @@
 
 @if(isLoggedIn){ 
 <app-nav></app-nav>
-<mat-sidenav-container >
-    <mat-sidenav #sidenav mode="side" opened>
-        <mat-nav-list>
-            
-                <a mat-list-item routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-                <a mat-list-item routerLink="/products" routerLinkActive="active">Product</a>
-                <a mat-list-item routerLink="/calc" routerLinkActive="active"  *appDisplayLink>Investment Calculator</a>
-                <a mat-list-item routerLink="/todo" routerLinkActive="active"  *appDisplayLink>Task Management</a>
-                <a mat-list-item routerLink="/stock" routerLinkActive="active" *appDisplayLink> Order Stock</a>
-                <!-- add the * asterick to do an shortcut from ng-tmeplate-->
-                <a mat-list-item routerLink="/work" routerLinkActive="active" *appDisplayLink >Employees</a>
-        </mat-nav-list>
-    
-    </mat-sidenav>
 
+<!--new nav-->
+<mat-sidenav-container class="layout">  
+    <mat-sidenav #sidenav 
+                 mode="side" 
+                 [opened]="true"
+                 [class.collapsed]="isCollapsed"
+                 class="sidebar">
+      <!-- Floating collapse button -->
+      <button mat-icon-button class="collapse-btn" (click)="isCollapsed = !isCollapsed">
+        <span class="fa fa-2x" [ngClass]="isCollapsed ? 'fa-angle-right' : 'fa-angle-left'"></span>
+      </button>
+      <mat-nav-list>
+  
+        <a mat-list-item routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <span class="fa fa-2x fa-dashboard"></span>
+          <span class="label">Dashboard</span>
+        </a>
+  
+        <a mat-list-item routerLink="/products" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <i class="fa fa-2x  fa-archive"></i>
+          <span class="label">Product</span>
+        </a>
+  
+        <a mat-list-item routerLink="/calc" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" *appDisplayLink>
+          <i class="fa  fa-2x fa-calculator"></i>
+          <span class="label">Investment Calculator</span>
+        </a>
+  
+        <a mat-list-item routerLink="/todo" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" *appDisplayLink>
+          <i class="fa fa-2x  fa-check-square-o"></i>
+          <span class="label">Task Management</span>
+        </a>
+  
+        <a mat-list-item routerLink="/stock" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" *appDisplayLink>
+          <i class="fa  fa-2x fa-folder-open"></i>
+          <span class="label">Order Stock</span>
+        </a>
+  
+        <a mat-list-item routerLink="/work" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" *appDisplayLink>
+          <i class="fa  fa-2x fa-users"></i>
+          <span class="label">Employees</span>
+        </a>
+        <a mat-list-item href="https://mwhitfieldwork.github.io/portfolio/#home" routerLinkActive="active" *appDisplayLink>
+            <i class="fa  fa-2x fa-briefcase"></i>
+            <span class="label">Portfolio</span>
+        </a>
+        <a mat-list-item href="https://grithoodies.com" routerLinkActive="active" *appDisplayLink>
+            <i class="fa  fa-2x fa-shopping-cart"></i>
+            <span class="label">Shop</span>
+        </a>          
+      </mat-nav-list>
+  
+    </mat-sidenav>
+  
     <mat-sidenav-content>
-        <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
     </mat-sidenav-content>
-</mat-sidenav-container>
+  
+  </mat-sidenav-container>
+  
 }@else {
     <router-outlet></router-outlet>
 }

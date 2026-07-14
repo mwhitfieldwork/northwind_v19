@@ -1,5 +1,5 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
+import { Component, inject, OnInit} from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { NavComponent } from './nav/nav.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -7,6 +7,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { filter } from 'rxjs';
 import { DisplayLinkDirective } from './utilities/directives/auth/display-link.directive';
+import {NgClass } from '@angular/common';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -18,7 +19,10 @@ import { DisplayLinkDirective } from './utilities/directives/auth/display-link.d
     MatToolbarModule, 
     MatIconModule,
     RouterLink,
-    DisplayLinkDirective],
+    DisplayLinkDirective,
+    NgClass,
+    RouterLinkActive
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -26,7 +30,10 @@ export class AppComponent implements OnInit{
   title = 'nwrevised';
   userId!:string | null;
   isLoggedIn = false
+  isCollapsed = false;
+
   private _router = inject(Router);
+
 
   ngOnInit(): void {
     this._router.events

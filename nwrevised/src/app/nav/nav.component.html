@@ -5,7 +5,7 @@
             <app-users [user]="getVisitor()" />
         </div>
         <ul>
-            <!-- if you are seeting the value of an attribute with a string, you dont need square brackets-->
+            <!---
             <li><a href="https://mwhitfieldwork.github.io/portfolio/#home" 
                 appSafelink 
                 queryParam="northwind">Portfolio</a>
@@ -14,6 +14,7 @@
                 appSafelink 
                 queryParam="northwind">Shop</a>
             </li>
+            -->
             <li>
                 <span class="user">Welcome, {{(user.userName)}}</span>          
                 <a href="#" (click)="Logout()">Logout</a>

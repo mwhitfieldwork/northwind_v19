@@ -26,6 +26,7 @@
     "bootstrap-icons": "^1.11.3",
     "chart.js": "^4.5.1",
     "d3": "^7.9.0",
+    "font-awesome": "^4.7.0",
     "ng2-charts": "^7.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

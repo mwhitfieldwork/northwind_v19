@@ -220,6 +220,17 @@ $color-violet-border:   #e6c9f5;
     display: flex;
   }
 
+  .col:first-of-type .mdc-card{
+    display: flex;
+    align-items: center;     // vertical centering
+    justify-content: center; // horizontal centering (optional)
+    position: relative;  
+  }
+
+  .chart {
+    height:100%
+  }
+  
   mat-card {
     flex: 1;
     display: flex;
@@ -231,6 +242,8 @@ $color-violet-border:   #e6c9f5;
   }
 }
 
+
+
 // =============================================================
 // Basic Information Cards Layout System
 // =============================================================
@@ -240,7 +253,6 @@ $color-violet-border:   #e6c9f5;
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
-  margin-bottom:200px;
 
   .col {
     flex: 1;
@@ -547,6 +559,10 @@ $color-violet-border:   #e6c9f5;
       color: $color-ink;
     }
   }  
+}
+
+.order-history {
+  margin-bottom:200px;
 }
 
 .employee-information {

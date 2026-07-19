@@ -10,19 +10,21 @@ import { TooltipDirective } from '../../utilities/directives/tooltip/tooltip.dir
 import { CardBasicComponent } from '../../shared/card-basic/card-basic.component';
 import { CurrencyPipe } from '@angular/common';
 import { Drivers } from '../../utilities/models/drivers';
+import { BarChartComponent } from "./bar-chart/bar-chart.component";
 @Component({
   selector: 'app-dash',
   standalone: true,
   imports: [
-    EmployeesComponent, 
-    MatCardModule, 
-    StockInventoryComponent, 
-    Chart1Component, 
+    EmployeesComponent,
+    MatCardModule,
+    StockInventoryComponent,
+    Chart1Component,
     OrderHistoryComponent,
     TooltipDirective,
     CardBasicComponent,
     CurrencyPipe,
-  ],
+    BarChartComponent
+],
   templateUrl: './dash.component.html',
   styleUrl: './dash.component.scss'
 })

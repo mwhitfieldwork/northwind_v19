@@ -1,0 +1,65 @@
+
+// --- Uniform Design Variables (unchanged) ---
+$font-family-sans: 'Inter', system-ui, -apple-system, sans-serif;
+$card-radius: 8px;
+$transition-speed: 0.3s;
+
+// --- Uniform Card Font Sizes (unchanged) ---
+$font-size-card-title: 1.15rem;
+$font-size-card-value: 2.25rem;
+$font-size-card-sub: 0.85rem;
+$font-size-card-footer: 0.9rem;
+
+// =============================================================
+// Colorway Tokens
+// =============================================================
+$color-primary:        #5b6df0; // signature indigo-blue
+$color-primary-dark:   #4654d6;
+$color-primary-light:  #eef0fd; // tinted background / borders
+
+$color-ink:             #262b45; // headings / high-emphasis text
+$color-ink-soft:        #6b7280; // secondary / muted text
+
+$color-border:          #e3e6f7;
+
+// Accent family for the four stat cards
+$color-amber:           #f59e0b;
+$color-amber-dark:      #92400e;
+$color-amber-bg-from:   #fffaf3;
+$color-amber-bg-to:     #fef3da;
+$color-amber-border:    #fde9b8;
+
+$color-teal:            #14b8a6;
+$color-teal-dark:       #115e4c;
+$color-teal-bg-from:    #f4fdfb;
+$color-teal-bg-to:      #d8f6ee;
+$color-teal-border:     #aee9da;
+
+// Violet — Harmonized Grouping
+$color-violet-bg-from:      #faf5ff;
+$color-violet-bg-to:        #f1e1fb;
+
+$color-violet-lighter:      #ede9fe;
+$color-violet-light:        #d8b4fe;
+$color-violet-border:       #e6c9f5;
+$color-violet-border-alt:   #c4a2f3;
+
+$color-violet:              #a855f7;
+
+$color-violet-dark:         #6b21a8;
+$color-violet-darker:       #581c87;
+$color-violet-deep:         #4c1d95;
+
+
+
+
+$color-navy:            #172132;   // sidebar + header tone
+$color-slate:           #3d3d47;   // dark text / icons
+$color-gray-cool:       #6e747b;   // muted UI text
+$color-gray-light:      #edf3f7;   // card backgrounds
+$color-blue-soft:       #8fa3b2;   // soft blue-gray UI elements
+$color-blue-accent:     #4a9fd4;   // charts / links / highlights
+$color-teal-accent:     #3accc0;   // accent badges / stats
+$color-green-accent:    #309c63;   // positive KPI indicators
+$color-gold-accent:     #efad2a;   // highlight / warning / CTA
+$color-white:           #ffffff;   // base background

@@ -70,8 +70,16 @@ donutChartData: ChartData<'doughnut'> = {
     label: 'CategoriesA',
     data: [1],
     backgroundColor: [
-      '#FF6F61', '#FFB347', '#FFD700', '#FF8C00', '#FF4500',
-      '#DC143C', '#E9967A', '#CD5C5C', '#FFA07A', '#F4A460', '#D2691E', '#C0392B'
+      '#faf5ff', // violet-bg-from
+      '#f1e1fb', // violet-bg-to
+      '#ede9fe', // violet-lighter
+      '#d8b4fe', // violet-light
+      '#e6c9f5', // violet-border
+      '#c4a2f3', // violet-border-alt
+      '#a855f7', // violet
+      '#6b21a8', // violet-dark
+      '#581c87', // violet-darker
+      '#4c1d95'  // violet-deep
     ],
     borderWidth: 0,
     hoverBorderWidth: 0,
@@ -164,8 +172,16 @@ displayData(): void {
       label: this.categoryName,
       data: [...this.data],
       backgroundColor: [
-        '#FF6F61', '#FFB347', '#FFD700', '#FF8C00', '#FF4500',
-        '#DC143C', '#E9967A', '#CD5C5C', '#FFA07A', '#F4A460', '#D2691E', '#C0392B'
+        '#faf5ff', // violet-bg-from
+        '#f1e1fb', // violet-bg-to
+        '#ede9fe', // violet-lighter
+        '#d8b4fe', // violet-light
+        '#e6c9f5', // violet-border
+        '#c4a2f3', // violet-border-alt
+        '#a855f7', // violet
+        '#6b21a8', // violet-dark
+        '#581c87', // violet-darker
+        '#4c1d95'  // violet-deep
       ],
       borderWidth: 0,
       hoverOffset: 12

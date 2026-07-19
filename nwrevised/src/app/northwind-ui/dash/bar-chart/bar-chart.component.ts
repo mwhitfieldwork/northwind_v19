@@ -37,8 +37,12 @@ export class BarChartComponent implements OnInit{
         label: 'categories',
         data: this.data.slice(0,5),
         backgroundColor: [
-          "#FF6F61", "#FFB347", "#FFD700", "#FF8C00", "#FF4500",
-          "#DC143C", "#E9967A", "#CD5C5C", "#FFA07A", "#F4A460", "#D2691E"
+          '#e6c9f5', // violet-border
+          '#c4a2f3', // violet-border-alt
+          '#a855f7', // violet
+          '#6b21a8', // violet-dark
+          '#581c87', // violet-darker
+          '#4c1d95'  // violet-deep
         ]
       }
     ]
@@ -55,7 +59,7 @@ export class BarChartComponent implements OnInit{
     this.barChartOptions = {
       responsive: true,
       maintainAspectRatio: false,
-      indexAxis: 'x', // vertical bars
+      indexAxis: 'y', // vertical bars
       scales: {
         x: {
           grid: {

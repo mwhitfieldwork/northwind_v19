@@ -9,7 +9,7 @@ import { MatCheckboxChange, MatCheckboxModule } from '@angular/material/checkbox
 import { SelectionModel } from '@angular/cdk/collections';
 import { FormsModule } from '@angular/forms';
 import { CustomNumberPipe } from '../../utilities/pipes/custom-number/custom-number.pipe';
-import { DecimalPipe } from '@angular/common';
+import { DecimalPipe, NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-order-history',
@@ -21,7 +21,8 @@ import { DecimalPipe } from '@angular/common';
     MatCheckboxModule,
     FormsModule,
     CustomNumberPipe,
-    DecimalPipe
+    DecimalPipe,
+    NgClass
   ],
   templateUrl: './order-history.component.html',
   styleUrl: './order-history.component.scss'
@@ -46,16 +47,19 @@ displayedColumns: string[] = [
   'productName',
   'unitPrice',
   'quantity',
-  'discount'
+  'discount',
+  'status'
 ];
 
 ngAfterViewInit(): void {
   this.orderList = this._orderHistoryService.get()
   .pipe(
     map(orders => {
+      const statuses = ['Shipped', 'Pending', 'Processing'];
       return orders.map((order, index) => ({
         ...order, 
-        pkID: index + 1
+        pkID: index + 1,
+        status:statuses[Math.floor(Math.random() * statuses.length)]
       }));
     })
   )

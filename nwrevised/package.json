@@ -27,6 +27,7 @@
     "chart.js": "^4.5.1",
     "d3": "^7.9.0",
     "font-awesome": "^4.7.0",
+    "neptunecss": "^1.1.2",
     "ng2-charts": "^7.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

@@ -1,3 +1,4 @@
+@use '../app/shared/mixins/color-palette.scss' as *;
 
 mat-sidenav-container {
   height: 100vh; /* Fill the viewport vertically */
@@ -44,10 +45,14 @@ mat-sidenav {
 a {
   border-radius: unset;
   padding:5px;
+
+  .label{
+    color: #5e5d5d;
+  }
 }
 
 a.active {
-  background: #000;  
+  background: $color-violet-deep;  
   border-radius: unset;
   color: #fff;
 }

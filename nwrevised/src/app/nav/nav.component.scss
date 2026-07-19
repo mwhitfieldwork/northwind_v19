@@ -1,8 +1,14 @@
+@use '../shared/mixins/color-palette.scss' as *;
+
 #navigation {
-    background-color:#000;
+    background-color:$color-violet-deep;
     color:#fff;
     height:50px;
     display: flex;
+
+    .user {
+        color:#fff;
+    }
 
     & .user-icon app-users ::ng-deep button {
         all: unset;

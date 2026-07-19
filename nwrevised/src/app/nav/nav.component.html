@@ -1,20 +1,10 @@
 @if(user){
 <section id="navigation" >
-    <nav class=""navbar navbar-dark bg-dark>
+    <nav class="navbar">
         <div class="user-icon">
             <app-users [user]="getVisitor()" />
         </div>
         <ul>
-            <!---
-            <li><a href="https://mwhitfieldwork.github.io/portfolio/#home" 
-                appSafelink 
-                queryParam="northwind">Portfolio</a>
-            </li>
-            <li><a href="https://grithoodies.com" 
-                appSafelink 
-                queryParam="northwind">Shop</a>
-            </li>
-            -->
             <li>
                 <span class="user">Welcome, {{(user.userName)}}</span>          
                 <a href="#" (click)="Logout()">Logout</a>

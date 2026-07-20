@@ -49,7 +49,6 @@ getUser(){
       console.log(this.getVisitor());
     });
   }
-
 }
 
 Logout() {

@@ -103,7 +103,7 @@ export class BarChartComponent implements OnInit{
           titleColor: '#333',
           bodyColor: '#333',
           borderColor: '#ddd',
-          borderWidth: 1,
+          borderWidth: 0,
           padding: 12,
           cornerRadius: 6,
           displayColors: false

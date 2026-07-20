@@ -1,18 +1,21 @@
 
 @if(isLoggedIn){ 
 <app-nav></app-nav>
-
-<!--new nav-->
-<mat-sidenav-container class="layout">  
-    <mat-sidenav #sidenav 
-                 mode="side" 
-                 [opened]="true"
-                 [class.collapsed]="isCollapsed"
-                 class="sidebar">
+<mat-sidenav-container class="layout"> 
+  <mat-sidenav #sidenav 
+  mode="side" 
+  [opened]="true"
+  [class.collapsed]="isCollapsed"
+  class="sidebar"> 
       <!-- Floating collapse button -->
-      <button mat-icon-button class="collapse-btn" (click)="isCollapsed = !isCollapsed">
-        <span class="fa" [ngClass]="isCollapsed ? 'fa-angle-right' : 'fa-angle-left'"></span>
-      </button>
+      <div class="collapse-btn-container ">
+        <button mat-icon-button class="collapse-btn" (click)="isCollapsed = !isCollapsed">
+          <span class="fa" [ngClass]="isCollapsed ? 'fa-angle-right' : 'fa-angle-left'"></span>
+        </button>
+      </div>
+      <div class="user-icon">
+        <app-users [user]="getVisitor()" [signInUser]="user"/>
+      </div>
       <mat-nav-list>
   
         <a mat-list-item routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
@@ -53,16 +56,14 @@
             <span class="label">Shop</span>
         </a>          
       </mat-nav-list>
-  
-    </mat-sidenav>
-  
-    <mat-sidenav-content>
-      <router-outlet></router-outlet>
-    </mat-sidenav-content>
-  
-  </mat-sidenav-container>
-  
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container> 
 }@else {
     <router-outlet></router-outlet>
+    tested
 }
 

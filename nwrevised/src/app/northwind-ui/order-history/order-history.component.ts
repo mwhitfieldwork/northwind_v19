@@ -10,6 +10,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { FormsModule } from '@angular/forms';
 import { CustomNumberPipe } from '../../utilities/pipes/custom-number/custom-number.pipe';
 import { DecimalPipe, NgClass } from '@angular/common';
+import { RatingComponent } from '../../shared/rating/rating.component';
 
 @Component({
   selector: 'app-order-history',
@@ -22,6 +23,7 @@ import { DecimalPipe, NgClass } from '@angular/common';
     FormsModule,
     CustomNumberPipe,
     DecimalPipe,
+    RatingComponent,
     NgClass
   ],
   templateUrl: './order-history.component.html',
@@ -47,7 +49,7 @@ displayedColumns: string[] = [
   'productName',
   'unitPrice',
   'quantity',
-  'discount',
+  'rating',
   'status'
 ];
 
@@ -56,10 +58,12 @@ ngAfterViewInit(): void {
   .pipe(
     map(orders => {
       const statuses = ['Shipped', 'Pending', 'Processing'];
+
       return orders.map((order, index) => ({
-        ...order, 
+        ...order,
         pkID: index + 1,
-        status:statuses[Math.floor(Math.random() * statuses.length)]
+        status: statuses[Math.floor(Math.random() * statuses.length)],
+        rating: Math.floor(Math.random() * 81) + 20
       }));
     })
   )
@@ -67,7 +71,7 @@ ngAfterViewInit(): void {
     this.dataSource.data = data;
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    //console.log(data);
+    console.log(data);
   });
 }
 

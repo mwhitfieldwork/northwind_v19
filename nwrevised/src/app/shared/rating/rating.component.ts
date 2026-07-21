@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: '[rating]',
+  selector: 'app-rating',
   standalone: true,
   imports: [],
   templateUrl: './rating.component.html',
@@ -9,6 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class RatingComponent implements OnInit {
 @Input() score: number = 0;
+@Input() color?: string = '#03dffc';
 index: number = 0;
 stars: string[] = [];
 starList: any[] = [];

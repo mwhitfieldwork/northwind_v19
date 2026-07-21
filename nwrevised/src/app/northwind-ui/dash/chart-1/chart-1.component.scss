@@ -12,6 +12,7 @@
 
 canvas {
     background: none !important;
+    border:unset !important;
 }
 
 .grid {
@@ -24,4 +25,8 @@ canvas {
 
 select {
     margin-right:15px;
+}
+
+.sales-shell {
+    border:unset !important
 }

@@ -16,8 +16,6 @@ mat-sidenav-container {
     .user-icon app-users ::ng-deep button {
       all: unset;
       cursor: pointer;
-      display: flex;
-    justify-content: space-between;
     }
   
     .user-icon app-users ::ng-deep div {

@@ -36,6 +36,8 @@ export class BarChartComponent implements OnInit{
       {
         label: 'categories',
         data: this.data.slice(0,5),
+        barThickness: 36,
+        maxBarThickness: 36,
         backgroundColor: [
           '#e6c9f5', // violet-border
           '#c4a2f3', // violet-border-alt
@@ -59,32 +61,39 @@ export class BarChartComponent implements OnInit{
     this.barChartOptions = {
       responsive: true,
       maintainAspectRatio: false,
-      indexAxis: 'y', // vertical bars
+      indexAxis: 'y', // horizontal bars
+    
       scales: {
         x: {
-          grid: {
-            display: false
-          },
+          type: 'linear',
+          grid: { display: false },
           ticks: {
             color: '#999',
-            font: {
-              size: 12,
-              weight: 'lighter'
-            }
+            font: { size: 12, weight: 'lighter' }
           }
         },
         y: {
-          grid: {
-            color: '#eee'
-          },
+          type: 'category',
+          grid: { color: '#eee' },
           ticks: {
             color: '#999',
-            font: {
-              size: 12
-            }
+            font: { size: 12 }
           }
         }
       },
+    
+      elements: {
+        bar: {
+          borderRadius: {
+            topRight: 15,
+            topLeft: 15,
+            bottomRight: 15,
+            bottomLeft:15
+          },
+          borderSkipped: 'left'
+        }
+      },
+    
       plugins: {
         legend: {
           position: 'top',
@@ -92,10 +101,7 @@ export class BarChartComponent implements OnInit{
             usePointStyle: true,
             pointStyle: 'circle',
             color: '#666',
-            font: {
-              size: 13,
-              weight: 'lighter'
-            }
+            font: { size: 13, weight: 'lighter' }
           }
         },
         tooltip: {

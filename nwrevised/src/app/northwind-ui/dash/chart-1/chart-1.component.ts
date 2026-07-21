@@ -16,6 +16,7 @@ import { ChartData, ChartOptions, ChartType,
   Tooltip,
   Legend
  } from 'chart.js'; 
+import { combineLatest } from 'rxjs';
  Chart.register(DoughnutController, ArcElement, Tooltip, Legend);
 
 @Component({
@@ -124,44 +125,52 @@ constructor(private element:ElementRef, private fb: FormBuilder) {
   });
 }
 
-ngOnInit(): void {
-  this.categoriesList = this._categoriesService.getCategories().subscribe(
-    (response) => {
-      this.categories = response;
-    }
-  );
+ngOnInit() {
 
-  this.categorySalesForm.get('category_name')?.valueChanges.subscribe((value: string) => {
-    this.categoryName = value; // Update your variable whenever the value changes
+  // 1. Load categories from API
+  this._categoriesService.getCategories().subscribe(categories => {
+    this.categories = categories;
+
+    // Set defaults once categories arrive
+    this.categorySalesForm.patchValue({
+      category_name: categories[0].categoryName,
+      category_year: '2024'
+    });
   });
 
-  this.categorySalesForm.get('category_year')?.valueChanges.subscribe((value: string) => {
-    this.categorySalesList = this._categoriesService.getSalesByCategory(this.categoryName, value)
-    .subscribe((sales) => {
-      
-      //filter the number into a new data set
-      this.data = sales
-      .map((x)=> Number(x.totalPurchase) *.025)
-      .slice(0,8);
-      
-      //filter the names as the column data labels
-      this.xlabels = sales.map((x) =>
-        x.productName.length > 3 
-          ? x.productName.slice(0, 15) + '...' 
-          : x.productName
-      ).slice(0,8);
-      
-      this.maxHeight = Math.max(...this.data);
-      console.log(this.maxHeight);
+  // 2. Combine both form control value changes
+  combineLatest([
+    this.categorySalesForm.get('category_name')!.valueChanges,
+    this.categorySalesForm.get('category_year')!.valueChanges
+  ])
+  .subscribe(([categoryName, year]) => {
 
-      this.xFullLabels = sales.map((x) => x.productName) //full labels to reveal full names by tooltip
-      
-      this.displayData();
-    });
-  }); 
+    // Only run API when both fields have values
+    if (!categoryName || !year) return;
 
-  this.displayData();
+    this._categoriesService.getSalesByCategory(categoryName, year)
+      .subscribe(sales => {
+
+        this.data = sales
+          .map(x => Number(x.totalPurchase) * .025)
+          .slice(0, 8);
+
+        this.xlabels = sales
+          .map(x => x.productName.length > 3
+            ? x.productName.slice(0, 15) + '...'
+            : x.productName
+          )
+          .slice(0, 8);
+
+        this.maxHeight = Math.max(...this.data);
+
+        this.xFullLabels = sales.map(x => x.productName);
+
+        this.displayData();
+      });
+  });
 }
+
 
 displayData(): void {
 
@@ -184,6 +193,8 @@ displayData(): void {
         '#4c1d95'  // violet-deep
       ],
       borderWidth: 0,
+      hoverBorderWidth: 0,
+      borderColor: 'transparent',
       hoverOffset: 12
     }]
   };

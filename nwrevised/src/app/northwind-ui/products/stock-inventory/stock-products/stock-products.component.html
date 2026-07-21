@@ -30,7 +30,7 @@
             <span>{{item.value.categoryName}}</span>
             <span>{{item.value.unitPrice}}</span>
             <span>{{item.value.orderDate | date:'MM/dd/yyyy'}}</span>
-            <span rating [score]="item.value.rating"></span> 
+            <app-rating [score]="item.value.rating"></app-rating> 
 
            <!--<span><button 
             type="button"
